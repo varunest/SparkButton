@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="sparkbutton">
+        <attr name="sparkbutton_height" format="dimension" />
+        <attr name="sparkbutton_width" format="dimension" />
+        <attr name="sparkbutton_dots_size" format="dimension" />
+        <attr name="sparkbutton_circle_size" format="dimension" />
+        <attr name="sparkbutton_img_src" format="reference" />
+        <attr name="sparkbutton_secondarycolor" format="reference" />
+        <attr name="sparkbutton_primarycolor" format="reference" />
+    </declare-styleable>
+</resources>

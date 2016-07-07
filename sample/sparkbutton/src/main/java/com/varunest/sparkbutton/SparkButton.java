@@ -50,6 +50,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     int primaryColor = 0xFFFFC107;
 
     boolean pressOnTouch = true;
+    float animationSpeed = 1;
     boolean isChecked = true;
 
     private AnimatorSet animatorSet;
@@ -85,12 +86,13 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
 
     private void getStuffFromXML(AttributeSet attr) {
         TypedArray a = getContext().obtainStyledAttributes(attr, R.styleable.sparkbutton);
-        imageSize = a.getDimensionPixelOffset(R.styleable.sparkbutton_sparkbutton_size, Utils.dpToPx(getContext(), 50));
+        imageSize = a.getDimensionPixelOffset(R.styleable.sparkbutton_sparkbutton_iconSize, Utils.dpToPx(getContext(), 50));
         imageResourceIdActive = a.getResourceId(R.styleable.sparkbutton_sparkbutton_activeImage, INVALID_RESOURCE_ID);
         imageResourceIdDisabled = a.getResourceId(R.styleable.sparkbutton_sparkbutton_disabledImage, INVALID_RESOURCE_ID);
-        primaryColor = a.getResourceId(R.styleable.sparkbutton_sparkbutton_primaryColor, getResources().getColor(R.color.spark_primary_color));
-        secondaryColor = a.getResourceId(R.styleable.sparkbutton_sparkbutton_secondaryColor, getResources().getColor(R.color.spark_secondary_color));
+        primaryColor = getResources().getColor(a.getResourceId(R.styleable.sparkbutton_sparkbutton_primaryColor, R.color.spark_primary_color));
+        secondaryColor = getResources().getColor(a.getResourceId(R.styleable.sparkbutton_sparkbutton_secondaryColor, R.color.spark_secondary_color));
         pressOnTouch = a.getBoolean(R.styleable.sparkbutton_sparkbutton_pressOnTouch, true);
+        animationSpeed = a.getFloat(R.styleable.sparkbutton_sparkbutton_animationSpeed, 1);
     }
 
     void init() {
@@ -186,27 +188,27 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         animatorSet = new AnimatorSet();
 
         ObjectAnimator outerCircleAnimator = ObjectAnimator.ofFloat(circleView, CircleView.OUTER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
-        outerCircleAnimator.setDuration(250);
+        outerCircleAnimator.setDuration((long) (250 / animationSpeed));
         outerCircleAnimator.setInterpolator(DECCELERATE_INTERPOLATOR);
 
         ObjectAnimator innerCircleAnimator = ObjectAnimator.ofFloat(circleView, CircleView.INNER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
-        innerCircleAnimator.setDuration(200);
-        innerCircleAnimator.setStartDelay(200);
+        innerCircleAnimator.setDuration((long) (200 / animationSpeed));
+        innerCircleAnimator.setStartDelay((long) (200 / animationSpeed));
         innerCircleAnimator.setInterpolator(DECCELERATE_INTERPOLATOR);
 
         ObjectAnimator starScaleYAnimator = ObjectAnimator.ofFloat(imageView, ImageView.SCALE_Y, 0.2f, 1f);
-        starScaleYAnimator.setDuration(350);
-        starScaleYAnimator.setStartDelay(250);
+        starScaleYAnimator.setDuration((long) (350 / animationSpeed));
+        starScaleYAnimator.setStartDelay((long) (250 / animationSpeed));
         starScaleYAnimator.setInterpolator(OVERSHOOT_INTERPOLATOR);
 
         ObjectAnimator starScaleXAnimator = ObjectAnimator.ofFloat(imageView, ImageView.SCALE_X, 0.2f, 1f);
-        starScaleXAnimator.setDuration(350);
-        starScaleXAnimator.setStartDelay(250);
+        starScaleXAnimator.setDuration((long) (350 / animationSpeed));
+        starScaleXAnimator.setStartDelay((long) (250 / animationSpeed));
         starScaleXAnimator.setInterpolator(OVERSHOOT_INTERPOLATOR);
 
         ObjectAnimator dotsAnimator = ObjectAnimator.ofFloat(dotsView, DotsView.DOTS_PROGRESS, 0, 1f);
-        dotsAnimator.setDuration(900);
-        dotsAnimator.setStartDelay(50);
+        dotsAnimator.setDuration((long) (900 / animationSpeed));
+        dotsAnimator.setStartDelay((long) (50 / animationSpeed));
         dotsAnimator.setInterpolator(ACCELERATE_DECELERATE_INTERPOLATOR);
 
         animatorSet.playTogether(

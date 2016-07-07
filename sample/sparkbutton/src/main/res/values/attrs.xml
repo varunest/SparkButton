@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="sparkbutton">
-        <attr name="sparkbutton_size" format="dimension|reference" />
+        <attr name="sparkbutton_iconSize" format="dimension|reference" />
         <attr name="sparkbutton_activeImage" format="reference" />
         <attr name="sparkbutton_disabledImage" format="reference" />
         <attr name="sparkbutton_primaryColor" format="reference" />

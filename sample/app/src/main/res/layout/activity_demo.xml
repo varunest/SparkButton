@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
+    android:background="#eeee"
     tools:context="com.varunest.sample.DemoActivity">
 
     <HorizontalScrollView
@@ -84,27 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_panel"
-        android:layout_below="@+id/radiogroup_container">
-
-        <com.varunest.sparkbutton.SparkButton
-            android:id="@+id/sparkbutton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            app:sparkbutton_activeImage="@drawable/ic_star_on"
-            app:sparkbutton_disabledImage="@drawable/ic_star_off"
-            app:sparkbutton_size="@dimen/dimen_spark_button" />
-
-    </FrameLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/bottom_panel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-    </RelativeLayout>
+        android:layout_below="@+id/radiogroup_container" />
 
     <View
         android:layout_width="match_parent"

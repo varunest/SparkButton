@@ -33,12 +33,12 @@ public class DemoActivity extends AppCompatActivity {
         sparkButtonContainer.removeAllViews();
         final View heartLayout = LayoutInflater.from(DemoActivity.this).inflate(R.layout.demo_heart, sparkButtonContainer, false);
         sparkButtonContainer.addView(heartLayout);
-        ((SparkButton)heartLayout.findViewById(R.id.heart_button)).setChecked(false);
+        ((SparkButton) heartLayout.findViewById(R.id.heart_button)).setChecked(false);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                ((SparkButton)heartLayout.findViewById(R.id.heart_button)).setChecked(true);
-                ((SparkButton)heartLayout.findViewById(R.id.heart_button)).playAnimation();
+                ((SparkButton) heartLayout.findViewById(R.id.heart_button)).setChecked(true);
+                ((SparkButton) heartLayout.findViewById(R.id.heart_button)).playAnimation();
             }
         }, 300);
     }
@@ -49,13 +49,39 @@ public class DemoActivity extends AppCompatActivity {
         sparkButtonContainer.addView(starLayout);
         ((SparkButton) starLayout.findViewById(R.id.star_button1)).setChecked(false);
         ((SparkButton) starLayout.findViewById(R.id.star_button2)).setChecked(false);
+        starLayout.findViewById(R.id.cardview_1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                starLayout.findViewById(R.id.star_button1).performClick();
+            }
+        });
+        starLayout.findViewById(R.id.cardview_2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                starLayout.findViewById(R.id.star_button2).performClick();
+            }
+        });
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 ((SparkButton) starLayout.findViewById(R.id.star_button2)).setChecked(true);
                 ((SparkButton) starLayout.findViewById(R.id.star_button2)).playAnimation();
             }
-        }, 800);
+        }, 500);
+    }
+
+    private void inflateFacebookLayout() {
+        sparkButtonContainer.removeAllViews();
+        View facebookLayout = LayoutInflater.from(DemoActivity.this).inflate(R.layout.demo_facebook, sparkButtonContainer, false);
+        sparkButtonContainer.addView(facebookLayout);
+        ((SparkButton) facebookLayout.findViewById(R.id.facebook_button)).playAnimation();
+    }
+
+    private void inflateTWitterLayout() {
+        sparkButtonContainer.removeAllViews();
+        View twitterLayout = LayoutInflater.from(DemoActivity.this).inflate(R.layout.demo_twitter, sparkButtonContainer, false);
+        sparkButtonContainer.addView(twitterLayout);
+        ((SparkButton)twitterLayout.findViewById(R.id.twitter_button)).playAnimation();
     }
 
     @NonNull
@@ -74,13 +100,11 @@ public class DemoActivity extends AppCompatActivity {
                         break;
 
                     case R.id.facebook:
-//                        sparkButtonContainer.addView(facebookButton);
-//                        facebookButton.playAnimation();
+                        inflateFacebookLayout();
                         break;
 
                     case R.id.twitter:
-//                        sparkButtonContainer.addView(twitterButton);
-//                        twitterButton.playAnimation();
+                        inflateTWitterLayout();
                         break;
                 }
             }

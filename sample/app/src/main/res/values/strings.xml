@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">sample</string>
+    <string name="app_name">SparkButton Showcase App</string>
     <string name="star">Star</string>
     <string name="heart">Heart</string>
     <string name="facebook">Facebook</string>
@@ -7,4 +7,7 @@
     <string name="star_layout_text">Highly customizable and lightweight library that allows you to create a button with animation effect similar to Twitter\'s heart.</string>
     <string name="star_layout_text2">Tap on this card to check out the sleek animation!! Any custom icon of choice can be used with this library very easily. Checkout more examples by switching views from the tab above.</string>
     <string name="heart_layout_text">Increase user engagement and social activities in your App with the help of these buttons.</string>
+    <string name="facebook_layout_text">Increase clicks where it matters the most to you, by attracting user attention.</string>
+    <string name="twitter_layout_text">Follow me on Twitter</string>
+    <string name="thankyou_text">Thank You :)</string>
 </resources>

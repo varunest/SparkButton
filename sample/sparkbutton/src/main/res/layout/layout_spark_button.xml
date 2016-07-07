@@ -3,16 +3,16 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <com.varunest.sparkbutton.heplers.DotsView.DotsView
+    <com.varunest.sparkbutton.heplers.DotsView
         android:id="@+id/vDotsView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
-    <com.varunest.sparkbutton.heplers.DotsView.CircleView
+    <com.varunest.sparkbutton.heplers.CircleView
         android:id="@+id/vCircle"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
     <ImageView

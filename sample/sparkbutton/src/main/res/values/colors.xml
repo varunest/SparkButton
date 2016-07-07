@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="spark_primary_color">#FFFFC107</color>
+    <color name="spark_secondary_color">#FFFF5722</color>
+</resources>

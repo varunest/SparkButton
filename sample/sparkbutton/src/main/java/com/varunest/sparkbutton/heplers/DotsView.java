@@ -63,8 +63,9 @@ public class DotsView extends View {
         init();
     }
 
+
     private void init() {
-        maxDotSize = getResources().getDimensionPixelSize(Utils.dpToPx(getContext(), 4));
+        maxDotSize = Utils.dpToPx(getContext(), 4);
         for (int i = 0; i < circlePaints.length; i++) {
             circlePaints[i] = new Paint();
             circlePaints[i].setStyle(Paint.Style.FILL);
@@ -84,6 +85,10 @@ public class DotsView extends View {
     protected void onDraw(Canvas canvas) {
         drawOuterDotsFrame(canvas);
         drawInnerDotsFrame(canvas);
+    }
+
+    public void setMaxDotSize(int pxUnits) {
+        maxDotSize = pxUnits;
     }
 
     private void drawOuterDotsFrame(Canvas canvas) {

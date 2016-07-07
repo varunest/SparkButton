@@ -1,20 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context="com.varunest.sample.DemoActivity">
-    <com.varunest.sparkbutton.SparkButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
+    <HorizontalScrollView
+        android:id="@+id/radiogroup_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:scrollbarSize="2dp">
+
+        <RadioGroup
+            android:id="@+id/search_type_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="7.0dip"
+            android:paddingTop="7.0dip">
+
+            <RadioButton
+                android:id="@+id/star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:checked="true"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_vertical"
+                android:text="@string/star"
+                android:textColor="?android:textColorTertiary"
+                android:textSize="17.0dip" />
+
+
+            <RadioButton
+                android:id="@+id/heart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_vertical"
+                android:text="@string/heart"
+                android:textColor="?android:textColorTertiary"
+                android:textSize="17.0dip" />
+
+
+            <RadioButton
+                android:id="@+id/facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_vertical"
+                android:text="@string/facebook"
+                android:textColor="?android:textColorTertiary"
+                android:textSize="17.0dip" />
+
+
+            <RadioButton
+                android:id="@+id/twitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="16dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_vertical"
+                android:text="@string/twitter"
+                android:textColor="?android:textColorTertiary"
+                android:textSize="17.0dip" />
+
+        </RadioGroup>
+    </HorizontalScrollView>
+
+    <FrameLayout
+        android:id="@+id/sparkbutton_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_panel"
+        android:layout_below="@+id/radiogroup_container">
+
+        <com.varunest.sparkbutton.SparkButton
+            android:id="@+id/sparkbutton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            app:sparkbutton_activeImage="@drawable/ic_star_on"
+            app:sparkbutton_disabledImage="@drawable/ic_star_off"
+            app:sparkbutton_size="@dimen/dimen_spark_button" />
+
+    </FrameLayout>
+
 
     <RelativeLayout
         android:id="@+id/bottom_panel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10.0dip"
+        android:layout_below="@id/radiogroup_container"
+        android:background="@drawable/bottom_shadow" />
 </RelativeLayout>

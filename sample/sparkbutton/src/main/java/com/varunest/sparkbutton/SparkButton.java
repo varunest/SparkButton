@@ -7,7 +7,6 @@ import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -21,34 +20,43 @@ import android.widget.ImageView;
 
 import com.varunest.sparkbutton.heplers.CircleView;
 import com.varunest.sparkbutton.heplers.DotsView;
+import com.varunest.sparkbutton.heplers.Utils;
 
 /**
  * @author varun 7th July 2016
  */
-public class SparkButton extends FrameLayout {
+public class SparkButton extends FrameLayout implements View.OnClickListener {
     private static final DecelerateInterpolator DECCELERATE_INTERPOLATOR = new DecelerateInterpolator();
     private static final AccelerateDecelerateInterpolator ACCELERATE_DECELERATE_INTERPOLATOR = new AccelerateDecelerateInterpolator();
     private static final OvershootInterpolator OVERSHOOT_INTERPOLATOR = new OvershootInterpolator(4);
 
-    private ImageView vImageView;
-    private int imageHeight;
-    private int imageWidth;
-    private int imageResourceId = -1;
+    private static final int INVALID_RESOURCE_ID = -1;
+    private static final float DOTVIEW_SIZE_FACTOR = 3;
+    private static final float DOTS_SIZE_FACTOR = .08f;
+    private static final float CIRCLEVIEW_SIZE_FACTOR = 1.4f;
 
-    private DotsView vDotsView;
-    private int dotsSize;
+    ImageView imageView;
+    int imageSize;
+    int imageResourceIdActive = INVALID_RESOURCE_ID;
+    int imageResourceIdDisabled = INVALID_RESOURCE_ID;
 
-    private CircleView vCircle;
-    private int circleSize;
+    DotsView dotsView;
+    int dotsSize;
 
-    private int startColor = 0xFFFF5722;
-    private int endColor = 0xFFFFC107;
+    CircleView circleView;
+    int circleSize;
+
+    int secondaryColor = 0xFFFF5722;
+    int primaryColor = 0xFFFFC107;
+
+    boolean pressOnTouch = true;
+    boolean isChecked = true;
 
     private AnimatorSet animatorSet;
+    private SparkEventListener listener;
 
-    public SparkButton(Context context) {
+    SparkButton(Context context) {
         super(context);
-        init();
     }
 
     public SparkButton(Context context, AttributeSet attrs) {
@@ -70,86 +78,97 @@ public class SparkButton extends FrameLayout {
         init();
     }
 
-    public void setImageDrawable(Drawable drawable) {
-        vImageView.setBackgroundDrawable(drawable);
-    }
-
     public void setColors(int startColor, int endColor) {
-        this.startColor = startColor;
-        this.endColor = endColor;
+        this.secondaryColor = startColor;
+        this.primaryColor = endColor;
     }
 
     private void getStuffFromXML(AttributeSet attr) {
         TypedArray a = getContext().obtainStyledAttributes(attr, R.styleable.sparkbutton);
-        imageHeight = a.getDimensionPixelOffset(R.styleable.sparkbutton_sparkbutton_height, 100);
-        imageWidth = a.getDimensionPixelOffset(R.styleable.sparkbutton_sparkbutton_width, 100);
-        imageResourceId = a.getResourceId(R.styleable.sparkbutton_sparkbutton_img_src, -1);
-        dotsSize = a.getDimensionPixelOffset(R.styleable.sparkbutton_sparkbutton_dots_size, 250);
-        circleSize = a.getDimensionPixelOffset(R.styleable.sparkbutton_sparkbutton_circle_size, 150);
-        startColor = a.getResourceId(R.styleable.sparkbutton_sparkbutton_secondarycolor, -1);
-        if (startColor != -1) {
-            startColor = getResources().getColor(startColor);
-        } else {
-            startColor = 0xFFFF5722;
-        }
-        endColor = a.getResourceId(R.styleable.sparkbutton_sparkbutton_primarycolor, -1);
-        if (endColor != -1) {
-            endColor = getResources().getColor(endColor);
-        } else {
-            endColor = 0xFFFFC107;
-        }
+        imageSize = a.getDimensionPixelOffset(R.styleable.sparkbutton_sparkbutton_size, Utils.dpToPx(getContext(), 50));
+        imageResourceIdActive = a.getResourceId(R.styleable.sparkbutton_sparkbutton_activeImage, INVALID_RESOURCE_ID);
+        imageResourceIdDisabled = a.getResourceId(R.styleable.sparkbutton_sparkbutton_disabledImage, INVALID_RESOURCE_ID);
+        primaryColor = a.getResourceId(R.styleable.sparkbutton_sparkbutton_primaryColor, getResources().getColor(R.color.spark_primary_color));
+        secondaryColor = a.getResourceId(R.styleable.sparkbutton_sparkbutton_secondaryColor, getResources().getColor(R.color.spark_secondary_color));
+        pressOnTouch = a.getBoolean(R.styleable.sparkbutton_sparkbutton_pressOnTouch, true);
     }
 
-    private void init() {
+    void init() {
+        circleSize = (int) (imageSize * CIRCLEVIEW_SIZE_FACTOR);
+        dotsSize = (int) (imageSize * DOTVIEW_SIZE_FACTOR);
+
         LayoutInflater.from(getContext()).inflate(R.layout.layout_spark_button, this, true);
-        vCircle = (CircleView) findViewById(R.id.vCircle);
-        vCircle.setColors(startColor, endColor);
-        vCircle.getLayoutParams().height = circleSize;
-        vCircle.getLayoutParams().width = circleSize;
+        circleView = (CircleView) findViewById(R.id.vCircle);
+        circleView.setColors(secondaryColor, primaryColor);
+        circleView.getLayoutParams().height = circleSize;
+        circleView.getLayoutParams().width = circleSize;
 
-        vDotsView = (DotsView) findViewById(R.id.vDotsView);
-        vDotsView.setColors(startColor, endColor);
-        vDotsView.getLayoutParams().width = dotsSize;
-        vDotsView.getLayoutParams().height = dotsSize;
+        dotsView = (DotsView) findViewById(R.id.vDotsView);
+        dotsView.getLayoutParams().width = dotsSize;
+        dotsView.getLayoutParams().height = dotsSize;
+        dotsView.setColors(secondaryColor, primaryColor);
+        dotsView.setMaxDotSize((int) (imageSize * DOTS_SIZE_FACTOR));
 
-        vImageView = (ImageView) findViewById(R.id.ivImage);
-        vImageView.getLayoutParams().height = imageHeight;
-        vImageView.getLayoutParams().width = imageWidth;
-        if (imageResourceId != -1) {
-            vImageView.setImageDrawable(getResources().getDrawable(imageResourceId));
+        imageView = (ImageView) findViewById(R.id.ivImage);
+
+        imageView.getLayoutParams().height = imageSize;
+        imageView.getLayoutParams().width = imageSize;
+        if (imageResourceIdActive != INVALID_RESOURCE_ID) {
+            imageView.setImageResource(imageResourceIdActive);
+        }
+        setOnTouchListener();
+        setOnClickListener(this);
+    }
+
+    private void setOnTouchListener() {
+        if (pressOnTouch) {
+            setOnTouchListener(new OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            imageView.animate().scaleX(0.8f).scaleY(0.8f).setDuration(150).setInterpolator(DECCELERATE_INTERPOLATOR);
+                            setPressed(true);
+                            break;
+
+                        case MotionEvent.ACTION_MOVE:
+                            float x = event.getX();
+                            float y = event.getY();
+                            boolean isInside = (x > 0 && x < getWidth() && y > 0 && y < getHeight());
+                            if (isPressed() != isInside) {
+                                setPressed(isInside);
+                            }
+                            break;
+
+                        case MotionEvent.ACTION_UP:
+                        case MotionEvent.ACTION_CANCEL:
+                            imageView.animate().scaleX(1).scaleY(1).setInterpolator(DECCELERATE_INTERPOLATOR);
+                            if (isPressed()) {
+                                performClick();
+                                setPressed(false);
+                            }
+                            break;
+                    }
+                    return true;
+                }
+            });
+        } else {
+            setOnTouchListener(null);
         }
     }
 
-    public void enableStateAnimation() {
-        setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        vImageView.animate().scaleX(0.7f).scaleY(0.7f).setDuration(150).setInterpolator(DECCELERATE_INTERPOLATOR);
-                        setPressed(true);
-                        break;
+    public void setChecked(boolean flag) {
+        isChecked = flag;
+        imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdDisabled);
+    }
 
-                    case MotionEvent.ACTION_MOVE:
-                        float x = event.getX();
-                        float y = event.getY();
-                        boolean isInside = (x > 0 && x < getWidth() && y > 0 && y < getHeight());
-                        if (isPressed() != isInside) {
-                            setPressed(isInside);
-                        }
-                        break;
+    public void setEventListener(SparkEventListener listener) {
+        this.listener = listener;
+    }
 
-                    case MotionEvent.ACTION_UP:
-                        vImageView.animate().scaleX(1).scaleY(1).setInterpolator(DECCELERATE_INTERPOLATOR);
-                        if (isPressed()) {
-                            performClick();
-                            setPressed(false);
-                        }
-                        break;
-                }
-                return true;
-            }
-        });
+    public void pressOnTouch(boolean pressOnTouch) {
+        this.pressOnTouch = pressOnTouch;
+        init();
     }
 
     public void playAnimation() {
@@ -157,35 +176,35 @@ public class SparkButton extends FrameLayout {
             animatorSet.cancel();
         }
 
-        vImageView.animate().cancel();
-        vImageView.setScaleX(0);
-        vImageView.setScaleY(0);
-        vCircle.setInnerCircleRadiusProgress(0);
-        vCircle.setOuterCircleRadiusProgress(0);
-        vDotsView.setCurrentProgress(0);
+        imageView.animate().cancel();
+        imageView.setScaleX(0);
+        imageView.setScaleY(0);
+        circleView.setInnerCircleRadiusProgress(0);
+        circleView.setOuterCircleRadiusProgress(0);
+        dotsView.setCurrentProgress(0);
 
         animatorSet = new AnimatorSet();
 
-        ObjectAnimator outerCircleAnimator = ObjectAnimator.ofFloat(vCircle, CircleView.OUTER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
+        ObjectAnimator outerCircleAnimator = ObjectAnimator.ofFloat(circleView, CircleView.OUTER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
         outerCircleAnimator.setDuration(250);
         outerCircleAnimator.setInterpolator(DECCELERATE_INTERPOLATOR);
 
-        ObjectAnimator innerCircleAnimator = ObjectAnimator.ofFloat(vCircle, CircleView.INNER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
+        ObjectAnimator innerCircleAnimator = ObjectAnimator.ofFloat(circleView, CircleView.INNER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
         innerCircleAnimator.setDuration(200);
         innerCircleAnimator.setStartDelay(200);
         innerCircleAnimator.setInterpolator(DECCELERATE_INTERPOLATOR);
 
-        ObjectAnimator starScaleYAnimator = ObjectAnimator.ofFloat(vImageView, ImageView.SCALE_Y, 0.2f, 1f);
+        ObjectAnimator starScaleYAnimator = ObjectAnimator.ofFloat(imageView, ImageView.SCALE_Y, 0.2f, 1f);
         starScaleYAnimator.setDuration(350);
         starScaleYAnimator.setStartDelay(250);
         starScaleYAnimator.setInterpolator(OVERSHOOT_INTERPOLATOR);
 
-        ObjectAnimator starScaleXAnimator = ObjectAnimator.ofFloat(vImageView, ImageView.SCALE_X, 0.2f, 1f);
+        ObjectAnimator starScaleXAnimator = ObjectAnimator.ofFloat(imageView, ImageView.SCALE_X, 0.2f, 1f);
         starScaleXAnimator.setDuration(350);
         starScaleXAnimator.setStartDelay(250);
         starScaleXAnimator.setInterpolator(OVERSHOOT_INTERPOLATOR);
 
-        ObjectAnimator dotsAnimator = ObjectAnimator.ofFloat(vDotsView, DotsView.DOTS_PROGRESS, 0, 1f);
+        ObjectAnimator dotsAnimator = ObjectAnimator.ofFloat(dotsView, DotsView.DOTS_PROGRESS, 0, 1f);
         dotsAnimator.setDuration(900);
         dotsAnimator.setStartDelay(50);
         dotsAnimator.setInterpolator(ACCELERATE_DECELERATE_INTERPOLATOR);
@@ -201,14 +220,35 @@ public class SparkButton extends FrameLayout {
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationCancel(Animator animation) {
-                vCircle.setInnerCircleRadiusProgress(0);
-                vCircle.setOuterCircleRadiusProgress(0);
-                vDotsView.setCurrentProgress(0);
-                vImageView.setScaleX(1);
-                vImageView.setScaleY(1);
+                circleView.setInnerCircleRadiusProgress(0);
+                circleView.setOuterCircleRadiusProgress(0);
+                dotsView.setCurrentProgress(0);
+                imageView.setScaleX(1);
+                imageView.setScaleY(1);
             }
         });
 
         animatorSet.start();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (imageResourceIdDisabled != INVALID_RESOURCE_ID) {
+            isChecked = !isChecked;
+
+            imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdDisabled);
+
+            if (animatorSet != null) {
+                animatorSet.cancel();
+            }
+            if (isChecked) {
+                playAnimation();
+            }
+        } else {
+            playAnimation();
+        }
+        if (listener != null) {
+            listener.onEvent(imageView, isChecked);
+        }
     }
 }

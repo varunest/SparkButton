@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">sample</string>
+    <string name="star">Star</string>
+    <string name="heart">Heart</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
 </resources>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="sparkbutton">
-        <attr name="sparkbutton_height" format="dimension" />
-        <attr name="sparkbutton_width" format="dimension" />
-        <attr name="sparkbutton_dots_size" format="dimension" />
-        <attr name="sparkbutton_circle_size" format="dimension" />
-        <attr name="sparkbutton_img_src" format="reference" />
-        <attr name="sparkbutton_secondarycolor" format="reference" />
-        <attr name="sparkbutton_primarycolor" format="reference" />
+        <attr name="sparkbutton_size" format="dimension|reference" />
+        <attr name="sparkbutton_activeImage" format="reference" />
+        <attr name="sparkbutton_disabledImage" format="reference" />
+        <attr name="sparkbutton_primaryColor" format="reference" />
+        <attr name="sparkbutton_secondaryColor" format="reference" />
+        <attr name="sparkbutton_pressOnTouch" format="boolean" />
+        <attr name="sparkbutton_animationSpeed" format="float" />
     </declare-styleable>
 </resources>

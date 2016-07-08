@@ -1,9 +1,24 @@
+<!--
+  Title: Spark Button
+  Description: Highly customizable and lightweight library that allows you to create a button with animation effect similar to Twitter's heart animation.
+  Author: varunest
+  -->
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 #SparkButton
-
-Highly customizable and lightweight library that allows you to create a button with animation effect similar to Twitter's heart animation. 
+Highly customizable and lightweight library that allows you to create a button with animation effect similar to Twitter's heart animation.
 
 Library supports OS on API 14 and above.
+
+![Showcase Video](art/showcase.gif)
+
+##Dependency
+In your project's `build.gradle` add :
+
+```
+dependencies {
+    compile 'com.github.varunest:sparkbutton:1.0.0'
+}
+```
 
 
 ##Usage

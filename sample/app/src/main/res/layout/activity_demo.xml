@@ -4,92 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eeee"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:background="#eeee"
     tools:context="com.varunest.sample.DemoActivity">
 
-    <HorizontalScrollView
-        android:id="@+id/radiogroup_container"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:scrollbarSize="2dp">
+        android:minHeight="?actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:contentInsetLeft="0.0dip"
+        app:contentInsetStart="0.0dip"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-        <RadioGroup
-            android:id="@+id/search_type_radio_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingBottom="7.0dip"
-            android:paddingTop="7.0dip">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="?actionBarSize">
 
-            <RadioButton
-                android:id="@+id/star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="8dp"
-                android:checked="true"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center_vertical"
-                android:text="@string/star"
-                android:textColor="?android:textColorTertiary"
-                android:textSize="17.0dip" />
+           <TextView
+               android:id="@+id/title"
+               style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+               android:layout_width="wrap_content"
+               android:layout_height="fill_parent"
+               android:ellipsize="end"
+               android:layout_marginLeft="16dp"
+               android:fontFamily="sans-serif"
+               android:gravity="center_vertical"
+               android:lines="1"
+               android:paddingBottom="2.0dip"
+               android:paddingLeft="2.0dip"
+               android:paddingRight="2.0dip"
+               android:text="@string/app_name"
+               android:textColor="@android:color/white" />
+       </RelativeLayout>
 
-
-            <RadioButton
-                android:id="@+id/heart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center_vertical"
-                android:text="@string/heart"
-                android:textColor="?android:textColorTertiary"
-                android:textSize="17.0dip" />
+    </android.support.v7.widget.Toolbar>
 
 
-            <RadioButton
-                android:id="@+id/facebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center_vertical"
-                android:text="@string/facebook"
-                android:textColor="?android:textColorTertiary"
-                android:textSize="17.0dip" />
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:tabIndicatorColor="@android:color/white"
+        app:tabSelectedTextColor="@android:color/white"
+        app:tabTextColor="@android:color/white" />
 
-
-            <RadioButton
-                android:id="@+id/twitter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="16dp"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center_vertical"
-                android:text="@string/twitter"
-                android:textColor="?android:textColorTertiary"
-                android:textSize="17.0dip" />
-
-        </RadioGroup>
-    </HorizontalScrollView>
-
-    <FrameLayout
-        android:id="@+id/sparkbutton_container"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/showcase_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_panel"
-        android:layout_below="@+id/radiogroup_container" />
+        android:layout_below="@+id/tabs"></android.support.v4.view.ViewPager>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="10.0dip"
-        android:layout_below="@id/radiogroup_container"
+        android:layout_below="@id/tabs"
         android:background="@drawable/bottom_shadow" />
 </RelativeLayout>

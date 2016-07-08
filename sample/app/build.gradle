@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.varunest.sample"
-        minSdkVersion 15
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -27,3 +27,5 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.3.0'
     compile project(':sparkbutton')
 }
+
+

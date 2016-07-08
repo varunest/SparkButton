@@ -2,6 +2,7 @@ package com.varunest.sample;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -39,7 +40,14 @@ public class DemoActivity extends AppCompatActivity {
         showcaseViewpager = (ViewPager) findViewById(R.id.showcase_viewpager);
         pagerAdapter = new ScreenSlidePagerAdapter(DemoActivity.this);
         showcaseViewpager.setAdapter(pagerAdapter);
-        showcaseViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        showcaseViewpager.addOnPageChangeListener(getOnPageChangeListener());
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(showcaseViewpager);
+    }
+
+    @NonNull
+    private ViewPager.OnPageChangeListener getOnPageChangeListener() {
+        return new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -66,15 +74,11 @@ public class DemoActivity extends AppCompatActivity {
                 }
             }
 
-
             @Override
             public void onPageScrollStateChanged(int state) {
 
             }
-        });
-
-        tabLayout = (TabLayout)findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(showcaseViewpager);
+        };
     }
 
     private View getViewFromPosition(int position) {
@@ -101,20 +105,6 @@ public class DemoActivity extends AppCompatActivity {
 
     private void playStarAnimation(final View starLayout) {
         ((SparkButton) starLayout.findViewById(R.id.star_button1)).setChecked(false);
-        ((SparkButton) starLayout.findViewById(R.id.star_button2)).setChecked(false);
-        starLayout.findViewById(R.id.cardview_1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                starLayout.findViewById(R.id.star_button1).performClick();
-            }
-        });
-        starLayout.findViewById(R.id.cardview_2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                starLayout.findViewById(R.id.star_button2).performClick();
-            }
-        });
-
         ((SparkButton) starLayout.findViewById(R.id.star_button2)).setChecked(true);
         ((SparkButton) starLayout.findViewById(R.id.star_button2)).playAnimation();
     }

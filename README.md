@@ -12,12 +12,15 @@ Library supports OS on API 14 and above.
 ![Showcase Video](art/showcase.gif)
 
 ##Dependency
-In your project's `build.gradle` add :
+Copy|Paste  sparkbutton from the repo to your project and include library in your `settings.gradle` like this :
 
+```gradle
+include ':sparkbutton'
 ```
-dependencies {
-    compile 'com.github.varunest:sparkbutton:1.0.0'
-}
+Add dependency in your `build.gradle` :
+
+```gradle
+compile project(':sparkbutton')
 ```
 
 
@@ -54,12 +57,12 @@ SparkButton button  = new SparkButtonBuilder(context)
 
 ```
 <attr name="sparkbutton_iconSize" format="dimension|reference" />
-        <attr name="sparkbutton_activeImage" format="reference" />
-        <attr name="sparkbutton_disabledImage" format="reference" />
-        <attr name="sparkbutton_primaryColor" format="reference" />
-        <attr name="sparkbutton_secondaryColor" format="reference" />
-        <attr name="sparkbutton_pressOnTouch" format="boolean" />
-        <attr name="sparkbutton_animationSpeed" format="float" />
+<attr name="sparkbutton_activeImage" format="reference" />
+<attr name="sparkbutton_disabledImage" format="reference" />
+<attr name="sparkbutton_primaryColor" format="reference" />
+<attr name="sparkbutton_secondaryColor" format="reference" />
+<attr name="sparkbutton_pressOnTouch" format="boolean" />
+<attr name="sparkbutton_animationSpeed" format="float" />
 ```
 
 ##Documentation
@@ -135,18 +138,22 @@ sparkButton.playAnimation();
 ```
 
 ##Advanced
+* 	There can be a situation when you don't want the button to 	scale download when pressed or consume touch. You can 	avoid this by calling the following function :
 
-There can be a situation when you don't want the button to scale download when pressed or consume touch. You can avoid this by calling the following function :
-
-```java
+	```java
 	sparkButton.pressOnTouch(false);
-```
+	```
 
-If you are using SparkButton between layout hierarchy, it can result in **animation getting cropped**. To avoid this cropping of the animation, set `clipChildren` and `clipToPadding` XML attribute of all the parent views 
-to `false`.
+* 	If you are using SparkButton between layout hierarchy, it 	can result in **animation getting cropped**. To avoid this 	cropping of the animation, set `clipChildren` and 	`clipToPadding` XML attribute of all the parent views 
+	to `false`.
+
+* 	You can view examples of few custom buttons in the [sample 	app](sample/app).
 
 ##Inspiration
 SparkButton was inspired by : [https://github.com/frogermcs/LikeAnimation](https://github.com/frogermcs/LikeAnimation)
 
 ##Contribution
 Any contributions, large or small,features, bug fixes are welcomed and appreciated. Use pull requests, they will be thoroughly reviewed and discussed.
+
+##License
+Library falls under [Apache 2.0] (LICENSE.md)

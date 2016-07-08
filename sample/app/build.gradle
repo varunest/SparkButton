@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.varunest.sample"
+        applicationId "com.varunest.sample.sparkbutton"
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1

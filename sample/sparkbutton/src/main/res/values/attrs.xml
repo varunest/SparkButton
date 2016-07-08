@@ -3,7 +3,7 @@
     <declare-styleable name="sparkbutton">
         <attr name="sparkbutton_iconSize" format="dimension|reference" />
         <attr name="sparkbutton_activeImage" format="reference" />
-        <attr name="sparkbutton_disabledImage" format="reference" />
+        <attr name="sparkbutton_inActiveImage" format="reference" />
         <attr name="sparkbutton_primaryColor" format="reference" />
         <attr name="sparkbutton_secondaryColor" format="reference" />
         <attr name="sparkbutton_pressOnTouch" format="boolean" />

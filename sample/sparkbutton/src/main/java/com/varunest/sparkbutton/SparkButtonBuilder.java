@@ -21,8 +21,8 @@ public class SparkButtonBuilder {
         return this;
     }
 
-    public SparkButtonBuilder setDisabledImage(int resourceId) {
-        sparkButton.imageResourceIdDisabled = resourceId;
+    public SparkButtonBuilder setInactiveImage(int resourceId) {
+        sparkButton.imageResourceIdInactive = resourceId;
         return this;
     }
 
@@ -43,6 +43,11 @@ public class SparkButtonBuilder {
 
     public SparkButtonBuilder setImageSizeDp(int dp) {
         sparkButton.imageSize = Utils.dpToPx(context, dp);
+        return this;
+    }
+
+    public SparkButtonBuilder setAnimationSpeed(float value) {
+        sparkButton.animationSpeed = value;
         return this;
     }
 

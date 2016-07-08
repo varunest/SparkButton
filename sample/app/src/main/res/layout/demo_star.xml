@@ -49,7 +49,7 @@
                     android:layout_marginRight="16dp"
                     app:sparkbutton_animationSpeed=".85"
                     app:sparkbutton_activeImage="@drawable/ic_star_on"
-                    app:sparkbutton_disabledImage="@drawable/ic_star_off"
+                    app:sparkbutton_inActiveImage="@drawable/ic_star_off"
                     app:sparkbutton_iconSize="30dp" />
             </LinearLayout>
 
@@ -92,7 +92,7 @@
                     android:layout_marginRight="16dp"
                     app:sparkbutton_animationSpeed=".85"
                     app:sparkbutton_activeImage="@drawable/ic_star_on"
-                    app:sparkbutton_disabledImage="@drawable/ic_star_off"
+                    app:sparkbutton_inActiveImage="@drawable/ic_star_off"
                     app:sparkbutton_iconSize="30dp" />
             </LinearLayout>
 

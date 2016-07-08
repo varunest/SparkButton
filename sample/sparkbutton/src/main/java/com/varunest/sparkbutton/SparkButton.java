@@ -37,7 +37,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     private static final float CIRCLEVIEW_SIZE_FACTOR = 1.4f;
 
     int imageResourceIdActive = INVALID_RESOURCE_ID;
-    int imageResourceIdDisabled = INVALID_RESOURCE_ID;
+    int imageResourceIdInactive = INVALID_RESOURCE_ID;
 
     int imageSize;
     int dotsSize;
@@ -81,6 +81,10 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     public void setColors(int startColor, int endColor) {
         this.secondaryColor = startColor;
         this.primaryColor = endColor;
+    }
+
+    public void setAnimationSpeed(float animationSpeed) {
+        this.animationSpeed = animationSpeed;
     }
 
     void init() {
@@ -179,7 +183,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
      */
     public void setChecked(boolean flag) {
         isChecked = flag;
-        imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdDisabled);
+        imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdInactive);
     }
 
     public void setEventListener(SparkEventListener listener) {
@@ -193,10 +197,10 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (imageResourceIdDisabled != INVALID_RESOURCE_ID) {
+        if (imageResourceIdInactive != INVALID_RESOURCE_ID) {
             isChecked = !isChecked;
 
-            imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdDisabled);
+            imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdInactive);
 
             if (animatorSet != null) {
                 animatorSet.cancel();
@@ -253,7 +257,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         TypedArray a = getContext().obtainStyledAttributes(attr, R.styleable.sparkbutton);
         imageSize = a.getDimensionPixelOffset(R.styleable.sparkbutton_sparkbutton_iconSize, Utils.dpToPx(getContext(), 50));
         imageResourceIdActive = a.getResourceId(R.styleable.sparkbutton_sparkbutton_activeImage, INVALID_RESOURCE_ID);
-        imageResourceIdDisabled = a.getResourceId(R.styleable.sparkbutton_sparkbutton_disabledImage, INVALID_RESOURCE_ID);
+        imageResourceIdInactive = a.getResourceId(R.styleable.sparkbutton_sparkbutton_inActiveImage, INVALID_RESOURCE_ID);
         primaryColor = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.sparkbutton_sparkbutton_primaryColor, R.color.spark_primary_color));
         secondaryColor = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.sparkbutton_sparkbutton_secondaryColor, R.color.spark_secondary_color));
         pressOnTouch = a.getBoolean(R.styleable.sparkbutton_sparkbutton_pressOnTouch, true);

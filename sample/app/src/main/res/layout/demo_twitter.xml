@@ -50,6 +50,7 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:clickable="false"
+                    app:sparkbutton_pressOnTouch="false"
                     android:layout_marginLeft="16dp"
                     app:sparkbutton_activeImage="@drawable/ic_twitter"
                     app:sparkbutton_iconSize="30dp"

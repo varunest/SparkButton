@@ -43,7 +43,7 @@
                     android:layout_gravity="right"
                     android:layout_marginTop="10dp"
                     app:sparkbutton_activeImage="@drawable/ic_heart_on"
-                    app:sparkbutton_disabledImage="@drawable/ic_heart_off"
+                    app:sparkbutton_inActiveImage="@drawable/ic_heart_off"
                     app:sparkbutton_iconSize="30dp"
                     app:sparkbutton_primaryColor="@color/heart_primary_color"
                     app:sparkbutton_secondaryColor="@color/heart_secondary_color" />

@@ -16,17 +16,24 @@ Grab the above demo app from here :
 [![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/badge_new.png)](https://play.google.com/store/apps/details?id=com.varunest.sample.sparkbutton)
 
 ##Dependency
-Copy|Paste  sparkbutton from the repo to your project and include library in your `settings.gradle` like this :
 
-```gradle
-include ':sparkbutton'
+Add it in your root build.gradle at the end of repositories:
+
 ```
-Add dependency in your `build.gradle` :
+allprojects {
+	repositories {
+		...
+		maven { url "https://jitpack.io" }
+	}
+}
+```	
+and then add dependency
 
-```gradle
-compile project(':sparkbutton')
 ```
-
+dependencies {
+	compile 'com.github.varunest:sparkbutton:1.0.0'
+}
+```
 
 ##Usage
 
@@ -151,7 +158,7 @@ sparkButton.playAnimation();
 * 	If you are using SparkButton between layout hierarchy, it 	can result in **animation getting cropped**. To avoid this 	cropping of the animation, set `clipChildren` and 	`clipToPadding` XML attribute of all the parent views 
 	to `false`.
 
-* 	You can view examples of few custom buttons in the [sample 	app](sample/app).
+* 	You can view examples of few custom buttons in the [sample 	app](app).
 
 ##Inspiration
 SparkButton was inspired by : [https://github.com/frogermcs/LikeAnimation](https://github.com/frogermcs/LikeAnimation)

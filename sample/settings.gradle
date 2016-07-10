@@ -1,3 +1,0 @@
-include ':app'
-include ':sparkbutton'
-project(':sparkbutton').projectDir = new File(settingsDir, '../sparkbutton')

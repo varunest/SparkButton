@@ -7,6 +7,7 @@
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![](https://jitpack.io/v/varunest/sparkbutton.svg)](https://jitpack.io/#varunest/sparkbutton)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SparkButton-red.svg?style=flat)](http://android-arsenal.com/details/1/3876)
 
 #SparkButton
 Highly customizable and lightweight library that allows you to create a button with animation effect similar to Twitter's heart animation.

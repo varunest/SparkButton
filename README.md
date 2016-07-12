@@ -50,7 +50,7 @@ dependencies {
             android:layout_width="40dp"
             android:layout_height="40dp"
             app:sparkbutton_activeImage="@drawable/active_image"
-            app:sparkbutton_inactiveImage="@drawable/inactive_image"
+            app:sparkbutton_inActiveImage="@drawable/inactive_image"
             app:sparkbutton_iconSize="40dp"
             app:sparkbutton_primaryColor="@color/primary_color"
             app:sparkbutton_secondaryColor="@color/secondary_color" />
@@ -94,7 +94,7 @@ SparkButton takes two colors primary and secondary. (It is recommended that prim
 ####XML
 ```
 app:sparkbutton_activeImage="@drawable/active_image"
-app:sparkbutton_inactiveImage="@drawable/inactive_image"
+app:sparkbutton_inActiveImage="@drawable/inactive_image"
 app:sparkbutton_primaryColor="@color/primaryColor"
 app:sparkbutton_secondaryColor="@color/secondaryColor"
 ```

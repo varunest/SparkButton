@@ -206,7 +206,10 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
                 animatorSet.cancel();
             }
             if (isChecked) {
+                circleView.setVisibility(View.VISIBLE);
                 playAnimation();
+            } else {
+                circleView.setVisibility(View.GONE);
             }
         } else {
             playAnimation();

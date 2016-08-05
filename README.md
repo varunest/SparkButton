@@ -24,7 +24,7 @@ Grab the above demo app from here :
 
 Add it in your root build.gradle at the end of repositories:
 
-```
+```groovy
 allprojects {
 	repositories {
 		...
@@ -34,9 +34,9 @@ allprojects {
 ```	
 and then add dependency
 
-```
+```groovy
 dependencies {
-	compile 'com.github.varunest:sparkbutton:1.0.0'
+	compile 'com.github.varunest:sparkbutton:1.0.1'
 }
 ```
 
@@ -44,13 +44,13 @@ dependencies {
 
 ###XML
 
-```
+```xml
 <com.varunest.sparkbutton.SparkButton
             android:id="@+id/spark_button"
             android:layout_width="40dp"
             android:layout_height="40dp"
             app:sparkbutton_activeImage="@drawable/active_image"
-            app:sparkbutton_inactiveImage="@drawable/inactive_image"
+            app:sparkbutton_inActiveImage="@drawable/inactive_image"
             app:sparkbutton_iconSize="40dp"
             app:sparkbutton_primaryColor="@color/primary_color"
             app:sparkbutton_secondaryColor="@color/secondary_color" />
@@ -71,7 +71,7 @@ SparkButton button  = new SparkButtonBuilder(context)
 
 ###Attributes
 
-```
+```xml
 <attr name="sparkbutton_iconSize" format="dimension|reference" />
 <attr name="sparkbutton_activeImage" format="reference" />
 <attr name="sparkbutton_disabledImage" format="reference" />
@@ -92,14 +92,14 @@ You can specify both active and inactive image of the button. If only active ima
 SparkButton takes two colors primary and secondary. (It is recommended that primary color is lighter than secondary for better results).
 
 ####XML
-```
+```xml
 app:sparkbutton_activeImage="@drawable/active_image"
-app:sparkbutton_inactiveImage="@drawable/inactive_image"
+app:sparkbutton_inActiveImage="@drawable/inactive_image"
 app:sparkbutton_primaryColor="@color/primaryColor"
 app:sparkbutton_secondaryColor="@color/secondaryColor"
 ```
 ####Java
-```
+```java
 SparkButton button = new SparkButtonBuilder(context)
 						.setActiveImage(R.drawable.active_image)
 						.setInActiveImage(R.drawable.inactive_image)
@@ -112,12 +112,12 @@ SparkButton button = new SparkButtonBuilder(context)
 You can specify the fraction by which the animation speed should increase/decrease.
 
 ####XML
-```
+```xml
 app:sparkbutton_animationSpeed="1.5"
 ```
 
 ####Java
-```
+```java
 sparkbutton.setAnimationSpeed(1.5f);
 ```
 
@@ -133,7 +133,7 @@ sparkButton.setChecked(true);
 
 Simply call setEventListener to listen click events. 
 
-```
+```java
 sparkButton.setEventListener(new SparkEventListener(){
 		@Override
 		void onEvent(ImageView button, boolean buttonState) {
@@ -149,7 +149,7 @@ sparkButton.setEventListener(new SparkEventListener(){
 ###Play Animation
 If you want to play animation regardless of click event execute following function:
 
-```
+```java
 sparkButton.playAnimation();
 ```
 

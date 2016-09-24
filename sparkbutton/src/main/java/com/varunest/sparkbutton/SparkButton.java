@@ -107,9 +107,13 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
 
         imageView.getLayoutParams().height = imageSize;
         imageView.getLayoutParams().width = imageSize;
-        if (imageResourceIdActive != INVALID_RESOURCE_ID) {
+        if (imageResourceIdInactive != INVALID_RESOURCE_ID) {
             // should load inactive img first
             imageView.setImageResource(imageResourceIdInactive);
+        } else if (imageResourceIdActive != INVALID_RESOURCE_ID){
+            imageView.setImageResource(imageResourceIdActive);
+        } else {
+            throw new IllegalArgumentException("One of Inactive/Active Image Resources are required!!");
         }
         setOnTouchListener();
         setOnClickListener(this);

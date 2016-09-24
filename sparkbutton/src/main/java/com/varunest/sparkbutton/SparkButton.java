@@ -50,7 +50,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
 
     boolean pressOnTouch = true;
     float animationSpeed = 1;
-    boolean isChecked = true;
+    boolean isChecked = false;
 
     private AnimatorSet animatorSet;
     private SparkEventListener listener;
@@ -108,7 +108,8 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         imageView.getLayoutParams().height = imageSize;
         imageView.getLayoutParams().width = imageSize;
         if (imageResourceIdActive != INVALID_RESOURCE_ID) {
-            imageView.setImageResource(imageResourceIdActive);
+            // should load inactive img first
+            imageView.setImageResource(imageResourceIdInactive);
         }
         setOnTouchListener();
         setOnClickListener(this);
@@ -207,8 +208,10 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
             }
             if (isChecked) {
                 circleView.setVisibility(View.VISIBLE);
+                dotsView.setVisibility(VISIBLE);
                 playAnimation();
             } else {
+                dotsView.setVisibility(INVISIBLE);
                 circleView.setVisibility(View.GONE);
             }
         } else {
@@ -265,5 +268,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         secondaryColor = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.sparkbutton_sparkbutton_secondaryColor, R.color.spark_secondary_color));
         pressOnTouch = a.getBoolean(R.styleable.sparkbutton_sparkbutton_pressOnTouch, true);
         animationSpeed = a.getFloat(R.styleable.sparkbutton_sparkbutton_animationSpeed, 1);
+        // recycle typedArray
+        a.recycle();
     }
 }

@@ -8,5 +8,7 @@
         <attr name="sparkbutton_secondaryColor" format="reference" />
         <attr name="sparkbutton_pressOnTouch" format="boolean" />
         <attr name="sparkbutton_animationSpeed" format="float" />
+        <attr name="sparkbutton_activeImageTint" format="reference" />
+        <attr name="sparkbutton_inActiveImageTint" format="reference" />
     </declare-styleable>
 </resources>

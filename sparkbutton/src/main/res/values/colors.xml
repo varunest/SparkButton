@@ -2,4 +2,5 @@
 <resources>
     <color name="spark_primary_color">#FFFFC107</color>
     <color name="spark_secondary_color">#FFFF5722</color>
+    <color name="spark_image_tint">#00000000</color>
 </resources>

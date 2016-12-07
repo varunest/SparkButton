@@ -198,6 +198,14 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         imageView.setColorFilter(isChecked ? activeImageTint : inActiveImageTint, PorterDuff.Mode.SRC_ATOP);
     }
 
+    /**
+     * Returns whether the button is checked (Active) or not.
+     * @return
+     */
+    public boolean isChecked() {
+        return isChecked;
+    }
+
     public void setEventListener(SparkEventListener listener) {
         this.listener = listener;
     }

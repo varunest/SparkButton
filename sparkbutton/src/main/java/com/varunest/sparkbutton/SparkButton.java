@@ -188,6 +188,15 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     }
 
     /**
+     * Returns whether the button is checked (Active) or not.
+     *
+     * @return
+     */
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    /**
      * Change Button State (Works only if both active and disabled image resource is defined)
      *
      * @param flag desired checked state of the button
@@ -196,14 +205,6 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         isChecked = flag;
         imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdInactive);
         imageView.setColorFilter(isChecked ? activeImageTint : inActiveImageTint, PorterDuff.Mode.SRC_ATOP);
-    }
-
-    /**
-     * Returns whether the button is checked (Active) or not.
-     * @return
-     */
-    public boolean isChecked() {
-        return isChecked;
     }
 
     public void setEventListener(SparkEventListener listener) {
@@ -254,21 +255,18 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
                             break;
 
                         case MotionEvent.ACTION_MOVE:
-                            float x = event.getX();
-                            float y = event.getY();
-                            boolean isInside = (x > 0 && x < getWidth() && y > 0 && y < getHeight());
-                            if (isPressed() != isInside) {
-                                setPressed(isInside);
-                            }
                             break;
 
                         case MotionEvent.ACTION_UP:
-                        case MotionEvent.ACTION_CANCEL:
                             imageView.animate().scaleX(1).scaleY(1).setInterpolator(DECCELERATE_INTERPOLATOR);
                             if (isPressed()) {
                                 performClick();
                                 setPressed(false);
                             }
+                            break;
+
+                        case MotionEvent.ACTION_CANCEL:
+                            imageView.animate().scaleX(1).scaleY(1).setInterpolator(DECCELERATE_INTERPOLATOR);
                             break;
                     }
                     return true;

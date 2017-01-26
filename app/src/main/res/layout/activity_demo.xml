@@ -13,36 +13,36 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="?actionBarSize"
         android:background="@color/colorPrimary"
+        android:minHeight="?actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:contentInsetLeft="0.0dip"
         app:contentInsetStart="0.0dip"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="?actionBarSize">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
 
-           <TextView
-               android:id="@+id/title"
-               style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-               android:layout_width="wrap_content"
-               android:layout_height="fill_parent"
-               android:ellipsize="end"
-               android:layout_marginLeft="16dp"
-               android:fontFamily="sans-serif"
-               android:gravity="center_vertical"
-               android:lines="1"
-               android:paddingBottom="2.0dip"
-               android:paddingLeft="2.0dip"
-               android:paddingRight="2.0dip"
-               android:text="@string/app_name"
-               android:textColor="@android:color/white" />
-       </RelativeLayout>
+            <TextView
+                android:id="@+id/title"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:paddingBottom="2.0dip"
+                android:paddingLeft="2.0dip"
+                android:paddingRight="2.0dip"
+                android:text="@string/app_name"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
-
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
@@ -59,7 +59,7 @@
         android:id="@+id/showcase_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tabs"></android.support.v4.view.ViewPager>
+        android:layout_below="@+id/tabs" />
 
     <View
         android:layout_width="match_parent"

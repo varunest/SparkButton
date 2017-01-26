@@ -24,6 +24,7 @@ android:
 #  - adb logcat &
 
 script:
+  - ./gradlew build
   - ./gradlew test
 #  - ./gradlew connectedAndroidTest
 

@@ -8,8 +8,9 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical">
@@ -40,11 +41,11 @@
                     android:id="@+id/heart_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:layout_marginTop="10dp"
                     app:sparkbutton_activeImage="@drawable/ic_heart_on"
-                    app:sparkbutton_inActiveImage="@drawable/ic_heart_off"
                     app:sparkbutton_iconSize="30dp"
+                    app:sparkbutton_inActiveImage="@drawable/ic_heart_off"
                     app:sparkbutton_primaryColor="@color/heart_primary_color"
                     app:sparkbutton_secondaryColor="@color/heart_secondary_color" />
             </LinearLayout>
@@ -76,37 +77,11 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="sans-serif-light"
                     android:text="@string/heart_layout_text"
-                    android:textSize="20dp" />
+                    android:textSize="20sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-        <LinearLayout
-            android:id="@+id/github_page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/button_shape"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="5dp">
+        <include layout="@layout/github_button" />
 
-            <ImageView
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:src="@drawable/ic_github" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="sans-serif-light"
-                android:text="Source Code"
-                android:textSize="20dp" />
-
-        </LinearLayout>
     </LinearLayout>
 </ScrollView>

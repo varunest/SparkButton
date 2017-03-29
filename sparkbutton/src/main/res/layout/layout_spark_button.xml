@@ -3,13 +3,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <com.varunest.sparkbutton.heplers.DotsView
+    <com.varunest.sparkbutton.helpers.DotsView
         android:id="@+id/vDotsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
-    <com.varunest.sparkbutton.heplers.CircleView
+    <com.varunest.sparkbutton.helpers.CircleView
         android:id="@+id/vCircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

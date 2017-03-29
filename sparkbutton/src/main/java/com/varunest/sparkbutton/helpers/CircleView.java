@@ -1,4 +1,4 @@
-package com.varunest.sparkbutton.heplers;
+package com.varunest.sparkbutton.helpers;
 
 import android.animation.ArgbEvaluator;
 import android.content.Context;

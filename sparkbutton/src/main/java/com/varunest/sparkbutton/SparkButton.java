@@ -28,7 +28,7 @@ import com.varunest.sparkbutton.helpers.Utils;
  * @author varun 7th July 2016
  */
 public class SparkButton extends FrameLayout implements View.OnClickListener {
-    private static final DecelerateInterpolator DECCELERATE_INTERPOLATOR = new DecelerateInterpolator();
+    private static final DecelerateInterpolator DECELERATE_INTERPOLATOR = new DecelerateInterpolator();
     private static final AccelerateDecelerateInterpolator ACCELERATE_DECELERATE_INTERPOLATOR = new AccelerateDecelerateInterpolator();
     private static final OvershootInterpolator OVERSHOOT_INTERPOLATOR = new OvershootInterpolator(4);
 
@@ -143,12 +143,12 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
 
         ObjectAnimator outerCircleAnimator = ObjectAnimator.ofFloat(circleView, CircleView.OUTER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
         outerCircleAnimator.setDuration((long) (250 / animationSpeed));
-        outerCircleAnimator.setInterpolator(DECCELERATE_INTERPOLATOR);
+        outerCircleAnimator.setInterpolator(DECELERATE_INTERPOLATOR);
 
         ObjectAnimator innerCircleAnimator = ObjectAnimator.ofFloat(circleView, CircleView.INNER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f);
         innerCircleAnimator.setDuration((long) (200 / animationSpeed));
         innerCircleAnimator.setStartDelay((long) (200 / animationSpeed));
-        innerCircleAnimator.setInterpolator(DECCELERATE_INTERPOLATOR);
+        innerCircleAnimator.setInterpolator(DECELERATE_INTERPOLATOR);
 
         ObjectAnimator starScaleYAnimator = ObjectAnimator.ofFloat(imageView, ImageView.SCALE_Y, 0.2f, 1f);
         starScaleYAnimator.setDuration((long) (350 / animationSpeed));
@@ -250,7 +250,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
                 public boolean onTouch(View v, MotionEvent event) {
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
-                            imageView.animate().scaleX(0.8f).scaleY(0.8f).setDuration(150).setInterpolator(DECCELERATE_INTERPOLATOR);
+                            imageView.animate().scaleX(0.8f).scaleY(0.8f).setDuration(150).setInterpolator(DECELERATE_INTERPOLATOR);
                             setPressed(true);
                             break;
 
@@ -258,7 +258,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
                             break;
 
                         case MotionEvent.ACTION_UP:
-                            imageView.animate().scaleX(1).scaleY(1).setInterpolator(DECCELERATE_INTERPOLATOR);
+                            imageView.animate().scaleX(1).scaleY(1).setInterpolator(DECELERATE_INTERPOLATOR);
                             if (isPressed()) {
                                 performClick();
                                 setPressed(false);
@@ -266,7 +266,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
                             break;
 
                         case MotionEvent.ACTION_CANCEL:
-                            imageView.animate().scaleX(1).scaleY(1).setInterpolator(DECCELERATE_INTERPOLATOR);
+                            imageView.animate().scaleX(1).scaleY(1).setInterpolator(DECELERATE_INTERPOLATOR);
                             break;
                     }
                     return true;

@@ -37,7 +37,7 @@ and then add dependency
 
 ```groovy
 dependencies {
-	compile 'com.github.varunest:sparkbutton:1.0.4'
+	compile 'com.github.varunest:sparkbutton:1.0.5'
 }
 ```
 

@@ -182,6 +182,22 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
                 imageView.setScaleX(1);
                 imageView.setScaleY(1);
             }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                if (listener != null) {
+                    listener.onEventAnimationEnd(imageView,isChecked);
+                }
+            }
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationEnd(animation);
+                if (listener != null) {
+                    listener.onEventAnimationStart(imageView,isChecked);
+                }
+            }
         });
 
         animatorSet.start();

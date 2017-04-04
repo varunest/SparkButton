@@ -2,7 +2,7 @@ package com.varunest.sparkbutton;
 
 import android.content.Context;
 
-import com.varunest.sparkbutton.heplers.Utils;
+import com.varunest.sparkbutton.helpers.Utils;
 
 /**
  * @author varun on 07/07/16.

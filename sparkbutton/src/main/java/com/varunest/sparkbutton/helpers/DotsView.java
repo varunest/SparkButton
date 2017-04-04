@@ -1,4 +1,4 @@
-package com.varunest.sparkbutton.heplers;
+package com.varunest.sparkbutton.helpers;
 
 import android.animation.ArgbEvaluator;
 import android.annotation.TargetApi;
@@ -15,7 +15,7 @@ import android.view.View;
  * @modifier Varun
  */
 public class DotsView extends View {
-    private static final int DOTS_COUNT = 7;
+    private static final int DOTS_COUNT = 10;
     private static final int OUTER_DOTS_POSITION_ANGLE = 360 / DOTS_COUNT;
 
     private int color1 = 0xFFFFC107;

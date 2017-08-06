@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1' // Add this line
     }
 }
@@ -11,6 +11,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url('https://maven.google.com')
+        }
     }
 }
 

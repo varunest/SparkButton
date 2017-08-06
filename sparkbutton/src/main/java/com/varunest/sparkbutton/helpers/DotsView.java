@@ -69,6 +69,7 @@ public class DotsView extends View {
         for (int i = 0; i < circlePaints.length; i++) {
             circlePaints[i] = new Paint();
             circlePaints[i].setStyle(Paint.Style.FILL);
+            circlePaints[i].setAntiAlias(true);
         }
     }
 

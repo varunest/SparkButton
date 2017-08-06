@@ -41,8 +41,6 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     int imageResourceIdInactive = INVALID_RESOURCE_ID;
 
     int imageSize;
-    int dotsSize;
-    int circleSize;
     int secondaryColor;
     int primaryColor;
     int activeImageTint;
@@ -91,22 +89,22 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     }
 
     void init() {
-        circleSize = (int) (imageSize * CIRCLEVIEW_SIZE_FACTOR);
-        dotsSize = (int) (imageSize * DOTVIEW_SIZE_FACTOR);
+        int circleSize = (int) (imageSize * CIRCLEVIEW_SIZE_FACTOR);
+        int dotsSize = (int) (imageSize * DOTVIEW_SIZE_FACTOR);
 
         LayoutInflater.from(getContext()).inflate(R.layout.layout_spark_button, this, true);
-        circleView = (CircleView) findViewById(R.id.vCircle);
+        circleView = findViewById(R.id.vCircle);
         circleView.setColors(secondaryColor, primaryColor);
         circleView.getLayoutParams().height = circleSize;
         circleView.getLayoutParams().width = circleSize;
 
-        dotsView = (DotsView) findViewById(R.id.vDotsView);
+        dotsView = findViewById(R.id.vDotsView);
         dotsView.getLayoutParams().width = dotsSize;
         dotsView.getLayoutParams().height = dotsSize;
         dotsView.setColors(secondaryColor, primaryColor);
         dotsView.setMaxDotSize((int) (imageSize * DOTS_SIZE_FACTOR));
 
-        imageView = (ImageView) findViewById(R.id.ivImage);
+        imageView = findViewById(R.id.ivImage);
 
         imageView.getLayoutParams().height = imageSize;
         imageView.getLayoutParams().width = imageSize;
@@ -118,7 +116,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
             imageView.setImageResource(imageResourceIdActive);
             imageView.setColorFilter(activeImageTint, PorterDuff.Mode.SRC_ATOP);
         } else {
-            throw new IllegalArgumentException("One of Inactive/Active Image Resources are required!!");
+            throw new IllegalArgumentException("One of Inactive/Active Image Resources is required!");
         }
         setOnTouchListener();
         setOnClickListener(this);
@@ -225,12 +223,12 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     
     public void setInactiveImage(int inactiveResource){
         this.imageResourceIdInactive = inactiveResource;
-        imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdInactive);;
+        imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdInactive);
     }
 
     public void setActiveImage(int activeResource){
         this.imageResourceIdActive = activeResource;
-        imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdInactive);;
+        imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdInactive);
     }
 
     public void setEventListener(SparkEventListener listener) {

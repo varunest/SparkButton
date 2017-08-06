@@ -18,13 +18,11 @@ public class Utils {
 
         Color.colorToHSV(color, hsv);
         hsv[2] *= multiplier; // value component
-        int darkColor = Color.HSVToColor(hsv);
-        return darkColor;
+        return Color.HSVToColor(hsv);
     }
 
     public static int dpToPx(Context context, int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-        return px;
+        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 }

@@ -11,7 +11,8 @@ import android.graphics.PorterDuff;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
+import android.view.Gravity;
+
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -89,25 +90,38 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     }
 
     void init() {
+
         int circleSize = (int) (imageSize * CIRCLEVIEW_SIZE_FACTOR);
         int dotsSize = (int) (imageSize * DOTVIEW_SIZE_FACTOR);
 
-        LayoutInflater.from(getContext()).inflate(R.layout.layout_spark_button, this, true);
-        circleView = findViewById(R.id.vCircle);
+        dotsView = new DotsView(getContext());
+        LayoutParams dotsViewLayoutParams = new LayoutParams(dotsSize, dotsSize);
+        dotsViewLayoutParams.gravity = Gravity.CENTER;
+        dotsView.setLayoutParams(dotsViewLayoutParams);
+
+        dotsView.setColors(secondaryColor, primaryColor);
+        dotsView.setMaxDotSize((int) (imageSize * DOTS_SIZE_FACTOR));
+
+        addView(dotsView);
+
+        circleView = new CircleView(getContext());
+        LayoutParams circleViewLayoutParams = new LayoutParams(circleSize, circleSize);
+        circleViewLayoutParams.gravity = Gravity.CENTER;
+        circleView.setLayoutParams(circleViewLayoutParams);
+
         circleView.setColors(secondaryColor, primaryColor);
         circleView.getLayoutParams().height = circleSize;
         circleView.getLayoutParams().width = circleSize;
 
-        dotsView = findViewById(R.id.vDotsView);
-        dotsView.getLayoutParams().width = dotsSize;
-        dotsView.getLayoutParams().height = dotsSize;
-        dotsView.setColors(secondaryColor, primaryColor);
-        dotsView.setMaxDotSize((int) (imageSize * DOTS_SIZE_FACTOR));
+        addView(circleView);
 
-        imageView = findViewById(R.id.ivImage);
+        imageView = new ImageView(getContext());
+        LayoutParams imageViewLayoutParams = new LayoutParams(imageSize, imageSize);
+        imageViewLayoutParams.gravity = Gravity.CENTER;
+        imageView.setLayoutParams(imageViewLayoutParams);
 
-        imageView.getLayoutParams().height = imageSize;
-        imageView.getLayoutParams().width = imageSize;
+        addView(imageView);
+
         if (imageResourceIdInactive != INVALID_RESOURCE_ID) {
             // should load inactive img first
             imageView.setImageResource(imageResourceIdInactive);
@@ -120,6 +134,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         }
         setOnTouchListener();
         setOnClickListener(this);
+
     }
 
     /**

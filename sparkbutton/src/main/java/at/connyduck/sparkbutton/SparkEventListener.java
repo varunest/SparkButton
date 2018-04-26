@@ -1,4 +1,4 @@
-package com.varunest.sparkbutton;
+package at.connyduck.sparkbutton;
 
 import android.widget.ImageView;
 

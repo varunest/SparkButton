@@ -7,7 +7,7 @@
     android:background="#eeee"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context="com.varunest.sample.DemoActivity">
+    tools:context="at.connyduck.sample.DemoActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

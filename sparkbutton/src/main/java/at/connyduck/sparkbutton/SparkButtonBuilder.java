@@ -1,8 +1,6 @@
-package com.varunest.sparkbutton;
+package at.connyduck.sparkbutton;
 
 import android.content.Context;
-
-import com.varunest.sparkbutton.helpers.Utils;
 
 /**
  * @author varun on 07/07/16.

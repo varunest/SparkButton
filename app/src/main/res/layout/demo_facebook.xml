@@ -15,7 +15,7 @@
         android:clipToPadding="false"
         android:orientation="vertical">
 
-        <com.varunest.sparkbutton.SparkButton
+        <at.connyduck.sparkbutton.SparkButton
             android:id="@+id/facebook_button"
             android:layout_width="80dp"
             android:layout_height="80dp"

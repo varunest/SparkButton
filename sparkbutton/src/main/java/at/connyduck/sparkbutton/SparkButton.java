@@ -1,4 +1,4 @@
-package com.varunest.sparkbutton;
+package at.connyduck.sparkbutton;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -20,10 +20,6 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
-import com.varunest.sparkbutton.helpers.CircleView;
-import com.varunest.sparkbutton.helpers.DotsView;
-import com.varunest.sparkbutton.helpers.Utils;
 
 /**
  * @author varun 7th July 2016

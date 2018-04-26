@@ -45,7 +45,7 @@
                 android:clipToPadding="false"
                 android:orientation="horizontal">
 
-                <com.varunest.sparkbutton.SparkButton
+                <at.connyduck.sparkbutton.SparkButton
                     android:id="@+id/twitter_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"

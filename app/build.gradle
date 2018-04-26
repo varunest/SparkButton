@@ -5,7 +5,7 @@ android {
     buildToolsVersion "27.0.3"
 
     defaultConfig {
-        applicationId "com.varunest.sample.sparkbutton"
+        applicationId "at.connyduck.sparkbutton.sample"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1

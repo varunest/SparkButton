@@ -37,7 +37,7 @@
                     android:layout_height="150dp"
                     android:background="#eee" />
 
-                <com.varunest.sparkbutton.SparkButton
+                <at.connyduck.sparkbutton.SparkButton
                     android:id="@+id/heart_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"

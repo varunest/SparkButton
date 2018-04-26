@@ -46,7 +46,7 @@ dependencies {
 ###XML
 
 ```xml
-<com.varunest.sparkbutton.SparkButton
+<at.connyduck.sparkbutton.SparkButton
             android:id="@+id/spark_button"
             android:layout_width="40dp"
             android:layout_height="40dp"

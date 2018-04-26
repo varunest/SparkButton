@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sparkbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
@@ -43,11 +43,11 @@
                     android:layout_height="30dp"
                     android:layout_gravity="end"
                     android:layout_marginTop="10dp"
-                    app:sparkbutton_activeImage="@drawable/ic_heart_on"
-                    app:sparkbutton_iconSize="30dp"
-                    app:sparkbutton_inActiveImage="@drawable/ic_heart_off"
-                    app:sparkbutton_primaryColor="@color/heart_primary_color"
-                    app:sparkbutton_secondaryColor="@color/heart_secondary_color" />
+                    sparkbutton:activeImage="@drawable/ic_heart_on"
+                    sparkbutton:iconSize="30dp"
+                    sparkbutton:inactiveImage="@drawable/ic_heart_off"
+                    sparkbutton:primaryColor="@color/heart_primary_color"
+                    sparkbutton:secondaryColor="@color/heart_secondary_color" />
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

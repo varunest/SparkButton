@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SparkButton">
-        <attr name="sparkbutton_iconSize" format="dimension|reference" />
-        <attr name="sparkbutton_activeImage" format="reference" />
-        <attr name="sparkbutton_inActiveImage" format="reference" />
-        <attr name="sparkbutton_primaryColor" format="reference" />
-        <attr name="sparkbutton_secondaryColor" format="reference" />
-        <attr name="sparkbutton_animationSpeed" format="float" />
-        <attr name="sparkbutton_activeImageTint" format="reference" />
-        <attr name="sparkbutton_inActiveImageTint" format="reference" />
+        <attr name="iconSize" format="dimension|reference" />
+        <attr name="activeImage" format="reference" />
+        <attr name="inactiveImage" format="reference" />
+        <attr name="primaryColor" format="reference" />
+        <attr name="secondaryColor" format="reference" />
+        <attr name="animationSpeed" format="float" />
+        <attr name="activeImageTint" format="reference" />
+        <attr name="inactiveImageTint" format="reference" />
     </declare-styleable>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sparkbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
@@ -51,10 +51,10 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="16dp"
                     android:clickable="false"
-                    app:sparkbutton_activeImage="@drawable/ic_twitter"
-                    app:sparkbutton_iconSize="30dp"
-                    app:sparkbutton_primaryColor="@color/twitter_primary_color"
-                    app:sparkbutton_secondaryColor="@color/twitter_secondary_color" />
+                    sparkbutton:activeImage="@drawable/ic_twitter"
+                    sparkbutton:iconSize="30dp"
+                    sparkbutton:primaryColor="@color/twitter_primary_color"
+                    sparkbutton:secondaryColor="@color/twitter_secondary_color" />
 
                 <TextView
                     android:layout_width="0dp"

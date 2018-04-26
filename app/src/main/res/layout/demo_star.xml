@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sparkbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
@@ -49,10 +49,10 @@
                     android:layout_marginBottom="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    app:sparkbutton_activeImage="@drawable/ic_star_on"
-                    app:sparkbutton_animationSpeed=".85"
-                    app:sparkbutton_iconSize="30dp"
-                    app:sparkbutton_inActiveImage="@drawable/ic_star_off" />
+                    sparkbutton:activeImage="@drawable/ic_star_on"
+                    sparkbutton:animationSpeed=".85"
+                    sparkbutton:iconSize="30dp"
+                    sparkbutton:inactiveImage="@drawable/ic_star_off" />
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
@@ -93,10 +93,10 @@
                     android:layout_marginBottom="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    app:sparkbutton_activeImage="@drawable/ic_star_on"
-                    app:sparkbutton_animationSpeed=".85"
-                    app:sparkbutton_iconSize="30dp"
-                    app:sparkbutton_inActiveImage="@drawable/ic_star_off" />
+                    sparkbutton:activeImage="@drawable/ic_star_on"
+                    sparkbutton:animationSpeed=".85"
+                    sparkbutton:iconSize="30dp"
+                    sparkbutton:inactiveImage="@drawable/ic_star_off" />
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

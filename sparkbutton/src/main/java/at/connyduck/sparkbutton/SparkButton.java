@@ -27,6 +27,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Px;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.Gravity;
 
@@ -121,7 +122,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
 
         addView(circleView);
 
-        imageView = new ImageView(getContext());
+        imageView = new AppCompatImageView(getContext());
         LayoutParams imageViewLayoutParams = new LayoutParams(imageSize, imageSize);
         imageViewLayoutParams.gravity = Gravity.CENTER;
         imageView.setLayoutParams(imageViewLayoutParams);

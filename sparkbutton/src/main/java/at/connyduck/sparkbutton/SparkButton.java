@@ -9,6 +9,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.os.Build;
+import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.Px;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -28,6 +31,7 @@ import at.connyduck.sparkbutton.helpers.Utils;
 /**
  * @author varun 7th July 2016
  */
+@SuppressWarnings("unused")
 public class SparkButton extends FrameLayout implements View.OnClickListener {
     private static final DecelerateInterpolator DECELERATE_INTERPOLATOR = new DecelerateInterpolator();
     private static final AccelerateDecelerateInterpolator ACCELERATE_DECELERATE_INTERPOLATOR = new AccelerateDecelerateInterpolator();
@@ -38,20 +42,21 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     private static final float DOTS_SIZE_FACTOR = .08f;
     private static final float CIRCLEVIEW_SIZE_FACTOR = 1.4f;
 
-    int imageResourceIdActive = INVALID_RESOURCE_ID;
-    int imageResourceIdInactive = INVALID_RESOURCE_ID;
+    private @DrawableRes int imageResourceIdActive = INVALID_RESOURCE_ID;
+    private @DrawableRes int imageResourceIdInactive = INVALID_RESOURCE_ID;
 
-    int imageSize;
-    int secondaryColor;
-    int primaryColor;
-    int activeImageTint;
-    int inActiveImageTint;
-    DotsView dotsView;
-    CircleView circleView;
-    ImageView imageView;
+    private @Px int imageSize;
+    private @ColorInt int primaryColor;
+    private @ColorInt int secondaryColor;
+    private @ColorInt int activeImageTint;
+    private @ColorInt int inActiveImageTint;
 
-    float animationSpeed = 1;
-    boolean isChecked = false;
+    private DotsView dotsView;
+    private CircleView circleView;
+    private ImageView imageView;
+
+    private float animationSpeed = 1;
+    private boolean isChecked = false;
 
     private AnimatorSet animatorSet;
     private SparkEventListener listener;
@@ -62,30 +67,21 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
 
     public SparkButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        getStuffFromXML(attrs);
+        initFromXML(attrs);
         init();
     }
 
     public SparkButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        getStuffFromXML(attrs);
+        initFromXML(attrs);
         init();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public SparkButton(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        getStuffFromXML(attrs);
+        initFromXML(attrs);
         init();
-    }
-
-    public void setColors(int startColor, int endColor) {
-        this.secondaryColor = startColor;
-        this.primaryColor = endColor;
-    }
-
-    public void setAnimationSpeed(float animationSpeed) {
-        this.animationSpeed = animationSpeed;
     }
 
     void init() {
@@ -215,10 +211,36 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         animatorSet.start();
     }
 
+    public @Px int getImageSize() {
+        return imageSize;
+    }
+
+    public void setImageSize(@Px int imageSize) {
+        this.imageSize = imageSize;
+    }
+
+    public @ColorInt int getPrimaryColor() {
+        return primaryColor;
+    }
+
+    public void setPrimaryColor(@ColorInt int primaryColor) {
+        this.primaryColor = primaryColor;
+    }
+
+    public @ColorInt int getSecondaryColor() {
+        return secondaryColor;
+    }
+
+    public void setSecondaryColor(@ColorInt int secondaryColor) {
+        this.secondaryColor = secondaryColor;
+    }
+
+    public void setAnimationSpeed(float animationSpeed) {
+        this.animationSpeed = animationSpeed;
+    }
+
     /**
-     * Returns whether the button is checked (Active) or not.
-     *
-     * @return
+     * @return Returns whether the button is checked (Active) or not.
      */
     public boolean isChecked() {
         return isChecked;
@@ -306,7 +328,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         });
     }
 
-    private void getStuffFromXML(AttributeSet attr) {
+    private void initFromXML(AttributeSet attr) {
         TypedArray a = getContext().obtainStyledAttributes(attr, R.styleable.SparkButton);
         imageSize = a.getDimensionPixelOffset(R.styleable.SparkButton_sparkbutton_iconSize, Utils.dpToPx(getContext(), 50));
         imageResourceIdActive = a.getResourceId(R.styleable.SparkButton_sparkbutton_activeImage, INVALID_RESOURCE_ID);

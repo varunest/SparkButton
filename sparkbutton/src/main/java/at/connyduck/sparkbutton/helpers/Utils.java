@@ -1,4 +1,4 @@
-package at.connyduck.sparkbutton;
+package at.connyduck.sparkbutton.helpers;
 
 import android.content.Context;
 import android.graphics.Color;

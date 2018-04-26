@@ -2,6 +2,8 @@ package at.connyduck.sparkbutton;
 
 import android.content.Context;
 
+import at.connyduck.sparkbutton.helpers.Utils;
+
 /**
  * @author varun on 07/07/16.
  */

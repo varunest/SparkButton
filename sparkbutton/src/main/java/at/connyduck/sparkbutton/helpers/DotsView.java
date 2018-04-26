@@ -1,4 +1,4 @@
-package at.connyduck.sparkbutton;
+package at.connyduck.sparkbutton.helpers;
 
 import android.animation.ArgbEvaluator;
 import android.annotation.TargetApi;

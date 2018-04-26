@@ -9,13 +9,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import at.connyduck.sample.sparkbutton.R;
 import at.connyduck.sparkbutton.SparkButton;
 
 public class DemoActivity extends AppCompatActivity {
     private ViewPager showcaseViewpager;
     private PagerAdapter pagerAdapter;
-    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +36,11 @@ public class DemoActivity extends AppCompatActivity {
     }
 
     private void initWidgets() {
-        showcaseViewpager = (ViewPager) findViewById(R.id.showcase_viewpager);
+        showcaseViewpager = findViewById(R.id.showcase_viewpager);
         pagerAdapter = new ScreenSlidePagerAdapter(DemoActivity.this);
         showcaseViewpager.setAdapter(pagerAdapter);
         showcaseViewpager.addOnPageChangeListener(getOnPageChangeListener());
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(showcaseViewpager);
     }
 

@@ -21,6 +21,10 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import at.connyduck.sparkbutton.helpers.CircleView;
+import at.connyduck.sparkbutton.helpers.DotsView;
+import at.connyduck.sparkbutton.helpers.Utils;
+
 /**
  * @author varun 7th July 2016
  */
@@ -313,16 +317,16 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     }
 
     private void getStuffFromXML(AttributeSet attr) {
-        TypedArray a = getContext().obtainStyledAttributes(attr, R.styleable.sparkbutton);
-        imageSize = a.getDimensionPixelOffset(R.styleable.sparkbutton_sparkbutton_iconSize, Utils.dpToPx(getContext(), 50));
-        imageResourceIdActive = a.getResourceId(R.styleable.sparkbutton_sparkbutton_activeImage, INVALID_RESOURCE_ID);
-        imageResourceIdInactive = a.getResourceId(R.styleable.sparkbutton_sparkbutton_inActiveImage, INVALID_RESOURCE_ID);
-        primaryColor = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.sparkbutton_sparkbutton_primaryColor, R.color.spark_primary_color));
-        secondaryColor = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.sparkbutton_sparkbutton_secondaryColor, R.color.spark_secondary_color));
-        activeImageTint = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.sparkbutton_sparkbutton_activeImageTint, R.color.spark_image_tint));
-        inActiveImageTint = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.sparkbutton_sparkbutton_inActiveImageTint, R.color.spark_image_tint));
-        pressOnTouch = a.getBoolean(R.styleable.sparkbutton_sparkbutton_pressOnTouch, true);
-        animationSpeed = a.getFloat(R.styleable.sparkbutton_sparkbutton_animationSpeed, 1);
+        TypedArray a = getContext().obtainStyledAttributes(attr, R.styleable.SparkButton);
+        imageSize = a.getDimensionPixelOffset(R.styleable.SparkButton_sparkbutton_iconSize, Utils.dpToPx(getContext(), 50));
+        imageResourceIdActive = a.getResourceId(R.styleable.SparkButton_sparkbutton_activeImage, INVALID_RESOURCE_ID);
+        imageResourceIdInactive = a.getResourceId(R.styleable.SparkButton_sparkbutton_inActiveImage, INVALID_RESOURCE_ID);
+        primaryColor = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.SparkButton_sparkbutton_primaryColor, R.color.spark_primary_color));
+        secondaryColor = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.SparkButton_sparkbutton_secondaryColor, R.color.spark_secondary_color));
+        activeImageTint = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.SparkButton_sparkbutton_activeImageTint, R.color.spark_image_tint));
+        inActiveImageTint = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.SparkButton_sparkbutton_inActiveImageTint, R.color.spark_image_tint));
+        pressOnTouch = a.getBoolean(R.styleable.SparkButton_sparkbutton_pressOnTouch, true);
+        animationSpeed = a.getFloat(R.styleable.SparkButton_sparkbutton_animationSpeed, 1);
         // recycle typedArray
         a.recycle();
     }

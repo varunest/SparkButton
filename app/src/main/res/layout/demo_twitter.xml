@@ -15,7 +15,6 @@
         android:clipToPadding="false"
         android:orientation="vertical">
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +53,6 @@
                     android:clickable="false"
                     app:sparkbutton_activeImage="@drawable/ic_twitter"
                     app:sparkbutton_iconSize="30dp"
-                    app:sparkbutton_pressOnTouch="false"
                     app:sparkbutton_primaryColor="@color/twitter_primary_color"
                     app:sparkbutton_secondaryColor="@color/twitter_secondary_color" />
 

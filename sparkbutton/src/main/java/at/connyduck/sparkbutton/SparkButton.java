@@ -50,7 +50,6 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     CircleView circleView;
     ImageView imageView;
 
-    boolean pressOnTouch = true;
     float animationSpeed = 1;
     boolean isChecked = false;
 
@@ -235,7 +234,7 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdInactive);
         imageView.setColorFilter(isChecked ? activeImageTint : inActiveImageTint, PorterDuff.Mode.SRC_ATOP);
     }
-    
+
     public void setInactiveImage(int inactiveResource){
         this.imageResourceIdInactive = inactiveResource;
         imageView.setImageResource(isChecked ? imageResourceIdActive : imageResourceIdInactive);
@@ -248,11 +247,6 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
 
     public void setEventListener(SparkEventListener listener) {
         this.listener = listener;
-    }
-
-    public void pressOnTouch(boolean pressOnTouch) {
-        this.pressOnTouch = pressOnTouch;
-        init();
     }
 
     @Override
@@ -283,37 +277,33 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
     }
 
     private void setOnTouchListener() {
-        if (pressOnTouch) {
-            setOnTouchListener(new OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    switch (event.getAction()) {
-                        case MotionEvent.ACTION_DOWN:
-                            imageView.animate().scaleX(0.8f).scaleY(0.8f).setDuration(150).setInterpolator(DECELERATE_INTERPOLATOR);
-                            setPressed(true);
-                            break;
+        setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        imageView.animate().scaleX(0.8f).scaleY(0.8f).setDuration(150).setInterpolator(DECELERATE_INTERPOLATOR);
+                        setPressed(true);
+                        break;
 
-                        case MotionEvent.ACTION_MOVE:
-                            break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
 
-                        case MotionEvent.ACTION_UP:
-                            imageView.animate().scaleX(1).scaleY(1).setInterpolator(DECELERATE_INTERPOLATOR);
-                            if (isPressed()) {
-                                performClick();
-                                setPressed(false);
-                            }
-                            break;
+                    case MotionEvent.ACTION_UP:
+                        imageView.animate().scaleX(1).scaleY(1).setInterpolator(DECELERATE_INTERPOLATOR);
+                        if (isPressed()) {
+                            performClick();
+                            setPressed(false);
+                        }
+                        break;
 
-                        case MotionEvent.ACTION_CANCEL:
-                            imageView.animate().scaleX(1).scaleY(1).setInterpolator(DECELERATE_INTERPOLATOR);
-                            break;
-                    }
-                    return true;
+                    case MotionEvent.ACTION_CANCEL:
+                        imageView.animate().scaleX(1).scaleY(1).setInterpolator(DECELERATE_INTERPOLATOR);
+                        break;
                 }
-            });
-        } else {
-            setOnTouchListener(null);
-        }
+                return true;
+            }
+        });
     }
 
     private void getStuffFromXML(AttributeSet attr) {
@@ -325,7 +315,6 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         secondaryColor = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.SparkButton_sparkbutton_secondaryColor, R.color.spark_secondary_color));
         activeImageTint = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.SparkButton_sparkbutton_activeImageTint, R.color.spark_image_tint));
         inActiveImageTint = ContextCompat.getColor(getContext(), a.getResourceId(R.styleable.SparkButton_sparkbutton_inActiveImageTint, R.color.spark_image_tint));
-        pressOnTouch = a.getBoolean(R.styleable.SparkButton_sparkbutton_pressOnTouch, true);
         animationSpeed = a.getFloat(R.styleable.SparkButton_sparkbutton_animationSpeed, 1);
         // recycle typedArray
         a.recycle();

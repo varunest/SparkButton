@@ -15,7 +15,6 @@
         android:clipToPadding="false"
         android:orientation="vertical">
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +44,7 @@
                 android:clipToPadding="false"
                 android:orientation="horizontal">
 
-                <com.varunest.sparkbutton.SparkButton
+                <at.connyduck.sparkbutton.SparkButton
                     android:id="@+id/twitter_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -54,7 +53,6 @@
                     android:clickable="false"
                     app:sparkbutton_activeImage="@drawable/ic_twitter"
                     app:sparkbutton_iconSize="30dp"
-                    app:sparkbutton_pressOnTouch="false"
                     app:sparkbutton_primaryColor="@color/twitter_primary_color"
                     app:sparkbutton_secondaryColor="@color/twitter_secondary_color" />
 

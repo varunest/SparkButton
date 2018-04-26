@@ -1,30 +1,42 @@
-package com.varunest.sample;
+/* Copyright 2017 Varun, 2018 Conny Duck
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied.
+ * See the License for the specific language governing permissions and limitations under the License.
+ */
+
+package at.connyduck.sparkbutton.sample;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.varunest.sample.sparkbutton.R;
-import com.varunest.sparkbutton.SparkButton;
+import at.connyduck.sparkbutton.SparkButton;
 
-/**
- * @author varun on 08/07/16.
- */
 public class ScreenSlidePagerAdapter extends PagerAdapter {
     private Context context;
 
-    public ScreenSlidePagerAdapter(Context context) {
+    ScreenSlidePagerAdapter(Context context) {
         this.context = context;
     }
 
+    @NonNull
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        View view = null;
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        View view;
         switch (position) {
             case 0:
                 view =  LayoutInflater.from(context).inflate(R.layout.demo_star, container, false);
@@ -42,11 +54,13 @@ public class ScreenSlidePagerAdapter extends PagerAdapter {
                 view = LayoutInflater.from(context).inflate(R.layout.demo_twitter, container, false);
                 setupTwitterLayoutClickEvents(view);
                 break;
+                default:
+                    throw new IllegalStateException();
         }
-        if (view != null) {
-            view.setTag(String.valueOf(position));
-            container.addView(view);
-        }
+
+        view.setTag(String.valueOf(position));
+        container.addView(view);
+
         return view;
     }
 
@@ -56,12 +70,12 @@ public class ScreenSlidePagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view == object;
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View) object);
     }
 
@@ -85,7 +99,7 @@ public class ScreenSlidePagerAdapter extends PagerAdapter {
         return title;
     }
 
-    public void setupStarLayoutClickEvents(final View view) {
+    private void setupStarLayoutClickEvents(final View view) {
         view.findViewById(R.id.cardview_1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +129,7 @@ public class ScreenSlidePagerAdapter extends PagerAdapter {
         });
     }
 
-    public void setupFacebookLayoutClickEvents(View view) {
+    private void setupFacebookLayoutClickEvents(View view) {
         view.findViewById(R.id.github_page).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,7 +138,7 @@ public class ScreenSlidePagerAdapter extends PagerAdapter {
         });
     }
 
-    public void setupTwitterLayoutClickEvents(final View view) {
+    private void setupTwitterLayoutClickEvents(final View view) {
         view.findViewById(R.id.github_page).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,18 +161,18 @@ public class ScreenSlidePagerAdapter extends PagerAdapter {
     }
 
     private void openGithubPage() {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.github.com/varunest"));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.github.com/connyduck/SparkButton"));
         context.startActivity(browserIntent);
     }
 
     private void openTwitterPage() {
-        Intent intent = null;
+        Intent intent;
         try {
             context.getPackageManager().getPackageInfo("com.twitter.android", 0);
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=930431515"));
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=517550916"));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         } catch (Exception e) {
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/930431515"));
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/ConnyDuck"));
         }
         context.startActivity(intent);
     }

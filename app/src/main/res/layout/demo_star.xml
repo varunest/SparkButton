@@ -41,7 +41,7 @@
                     android:text="@string/star_layout_text"
                     android:textSize="20sp" />
 
-                <com.varunest.sparkbutton.SparkButton
+                <at.connyduck.sparkbutton.SparkButton
                     android:id="@+id/star_button1"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -85,7 +85,7 @@
                     android:text="@string/star_layout_text2"
                     android:textSize="20sp" />
 
-                <com.varunest.sparkbutton.SparkButton
+                <at.connyduck.sparkbutton.SparkButton
                     android:id="@+id/star_button2"
                     android:layout_width="40dp"
                     android:layout_height="40dp"

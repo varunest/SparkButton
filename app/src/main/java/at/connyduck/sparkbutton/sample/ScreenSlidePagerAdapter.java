@@ -1,3 +1,17 @@
+/* Copyright 2017 Varun, 2018 Conny Duck
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied.
+ * See the License for the specific language governing permissions and limitations under the License.
+ */
+
 package at.connyduck.sparkbutton.sample;
 
 import android.content.Context;
@@ -12,9 +26,6 @@ import android.view.ViewGroup;
 
 import at.connyduck.sparkbutton.SparkButton;
 
-/**
- * @author varun on 08/07/16.
- */
 public class ScreenSlidePagerAdapter extends PagerAdapter {
     private Context context;
 
@@ -150,7 +161,7 @@ public class ScreenSlidePagerAdapter extends PagerAdapter {
     }
 
     private void openGithubPage() {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.github.com/varunest"));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.github.com/connyduck/SparkButton"));
         context.startActivity(browserIntent);
     }
 
@@ -158,10 +169,10 @@ public class ScreenSlidePagerAdapter extends PagerAdapter {
         Intent intent;
         try {
             context.getPackageManager().getPackageInfo("com.twitter.android", 0);
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=930431515"));
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=517550916"));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         } catch (Exception e) {
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/930431515"));
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/ConnyDuck"));
         }
         context.startActivity(intent);
     }

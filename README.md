@@ -10,7 +10,7 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SparkButton-red.svg?style=flat)](http://android-arsenal.com/details/1/3876)
 [![Build Status](https://travis-ci.org/varunest/SparkButton.svg?branch=master)](https://travis-ci.org/varunest/SparkButton)
 
-#SparkButton
+# SparkButton
 Highly customizable and lightweight library that allows you to create a button with animation effect similar to Twitter's heart animation.
 
 Library supports OS on API 14 and above.
@@ -21,7 +21,7 @@ Grab the above demo app from here :
 
 [![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/badge_new.png)](https://play.google.com/store/apps/details?id=com.varunest.sample.sparkbutton)
 
-##Dependency
+## Dependency
 
 Add it in your root build.gradle at the end of repositories:
 

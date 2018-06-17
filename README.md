@@ -41,9 +41,9 @@ dependencies {
 }
 ```
 
-##Usage
+## Usage
 
-###XML
+### XML
 
 ```xml
 <com.varunest.sparkbutton.SparkButton
@@ -57,7 +57,7 @@ dependencies {
             app:sparkbutton_secondaryColor="@color/secondary_color" />
 ```
 
-###Java
+### Java
 
 ```java
 SparkButton button  = new SparkButtonBuilder(context)
@@ -70,7 +70,7 @@ SparkButton button  = new SparkButtonBuilder(context)
                 .build();
 ```
 
-###Attributes
+### Attributes
 
 ```xml
 <attr name="sparkbutton_iconSize" format="dimension|reference" />
@@ -82,24 +82,24 @@ SparkButton button  = new SparkButtonBuilder(context)
 <attr name="sparkbutton_animationSpeed" format="float" />
 ```
 
-##Documentation
+## Documentation
 To use SparkButton simply include XML script or build it using SparkButtonBuilder as stated above.
 
 Various attributes that you can control are following: 
 
-###Button Image and Colors
+### Button Image and Colors
 You can specify both active and inactive image of the button. If only active image is specified SparkButton will behave as a normal button, otherwise as a switch.
 
 SparkButton takes two colors primary and secondary. (It is recommended that primary color is lighter than secondary for better results).
 
-####XML
+#### XML
 ```xml
 app:sparkbutton_activeImage="@drawable/active_image"
 app:sparkbutton_inActiveImage="@drawable/inactive_image"
 app:sparkbutton_primaryColor="@color/primaryColor"
 app:sparkbutton_secondaryColor="@color/secondaryColor"
 ```
-####Java
+#### Java
 ```java
 SparkButton button = new SparkButtonBuilder(context)
 						.setActiveImage(R.drawable.active_image)
@@ -109,20 +109,20 @@ SparkButton button = new SparkButtonBuilder(context)
 						.build();
 ```
 
-###Animation Speed
+### Animation Speed
 You can specify the fraction by which the animation speed should increase/decrease.
 
-####XML
+#### XML
 ```xml
 app:sparkbutton_animationSpeed="1.5"
 ```
 
-####Java
+#### Java
 ```java
 sparkbutton.setAnimationSpeed(1.5f);
 ```
 
-###Button State
+### Button State
 If you are using the SparkButton as a switch, you can 
 check/uncheck the button
 
@@ -130,7 +130,7 @@ check/uncheck the button
 sparkButton.setChecked(true);
 ```
 
-###Event Listener
+### Event Listener
 
 Simply call setEventListener to listen click events. 
 
@@ -147,14 +147,14 @@ sparkButton.setEventListener(new SparkEventListener(){
 });
 ```
 
-###Play Animation
+### Play Animation
 If you want to play animation regardless of click event execute following function:
 
 ```java
 sparkButton.playAnimation();
 ```
 
-##Advanced
+## Advanced
 * 	There can be a situation when you don't want the button to 	scale download when pressed or consume touch. You can 	avoid this by calling the following function :
 
 	```java
@@ -166,11 +166,11 @@ sparkButton.playAnimation();
 
 * 	You can view examples of few custom buttons in the [sample 	app](app).
 
-##Inspiration
+## Inspiration
 SparkButton was inspired by : [https://github.com/frogermcs/LikeAnimation](https://github.com/frogermcs/LikeAnimation)
 
-##Contribution
+## Contribution
 Any contributions, large or small,features, bug fixes are welcomed and appreciated. Use pull requests, they will be thoroughly reviewed and discussed.
 
-##License
+## License
 Library falls under [Apache 2.0] (LICENSE.md)

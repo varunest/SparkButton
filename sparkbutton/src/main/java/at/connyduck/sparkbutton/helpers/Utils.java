@@ -16,6 +16,7 @@ package at.connyduck.sparkbutton.helpers;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 
 public class Utils {
@@ -35,7 +36,7 @@ public class Utils {
         return Color.HSVToColor(hsv);
     }
 
-    public static int dpToPx(Context context, int dp) {
+    public static int dpToPx(@NonNull Context context, int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }

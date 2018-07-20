@@ -117,8 +117,6 @@ public class SparkButton extends FrameLayout implements View.OnClickListener {
         circleView.setLayoutParams(circleViewLayoutParams);
 
         circleView.setColors(secondaryColor, primaryColor);
-        circleView.getLayoutParams().height = circleSize;
-        circleView.getLayoutParams().width = circleSize;
 
         addView(circleView);
 

@@ -17,7 +17,6 @@ package at.connyduck.sparkbutton.helpers;
 import android.animation.ArgbEvaluator;
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -35,9 +34,6 @@ public class CircleView extends View {
 
     private Paint circlePaint = new Paint();
     private Paint maskPaint = new Paint();
-
-    private Bitmap tempBitmap;
-    private Canvas tempCanvas;
 
     private float outerCircleRadiusProgress = 0f;
     private float innerCircleRadiusProgress = 0f;
@@ -66,28 +62,23 @@ public class CircleView extends View {
     }
 
     private void init() {
+        setLayerType(View.LAYER_TYPE_HARDWARE, null);
         circlePaint.setStyle(Paint.Style.FILL);
         circlePaint.setAntiAlias(true);
         maskPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         maskPaint.setAntiAlias(true);
-
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
         maxCircleSize = w / 2;
-        tempBitmap = Bitmap.createBitmap(getWidth(), getWidth(), Bitmap.Config.ARGB_8888);
-        tempCanvas = new Canvas(tempBitmap);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        tempCanvas.drawColor(0xffffff, PorterDuff.Mode.CLEAR);
-        tempCanvas.drawCircle(getWidth() / 2, getHeight() / 2, outerCircleRadiusProgress * maxCircleSize, circlePaint);
-        tempCanvas.drawCircle(getWidth() / 2, getHeight() / 2, innerCircleRadiusProgress * (maxCircleSize+1), maskPaint);
-        canvas.drawBitmap(tempBitmap, 0, 0, null);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, outerCircleRadiusProgress * maxCircleSize, circlePaint);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, innerCircleRadiusProgress * (maxCircleSize+1), maskPaint);
     }
 
     public void setColors(int startColor, int endColor) {

@@ -37,7 +37,7 @@ and then add dependency
 
 ```groovy
 dependencies {
-	compile 'com.github.varunest:sparkbutton:1.0.5'
+	compile 'com.github.varunest:sparkbutton:1.0.6'
 }
 ```
 
@@ -170,7 +170,10 @@ sparkButton.playAnimation();
 SparkButton was inspired by : [https://github.com/frogermcs/LikeAnimation](https://github.com/frogermcs/LikeAnimation)
 
 ## Contribution
-Any contributions, large or small,features, bug fixes are welcomed and appreciated. Use pull requests, they will be thoroughly reviewed and discussed.
+Any contributions, large or small, features, bug fixes are welcomed and appreciated. Use pull requests, they will be thoroughly reviewed and discussed.
+
+## Link Backs
+If you are using this library in one of your projects and want it to be mentioned here in this ReadME, drop me a mail with project's url at mailvarunest@gmail.com.
 
 ## License
 Library falls under [Apache 2.0] (LICENSE.md)
